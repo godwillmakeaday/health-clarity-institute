@@ -2,7 +2,7 @@
 // Minimal, consistent stroke-based icons. No cartoonish medical clip-art.
 import * as React from "react";
 
-type IconProps = Omit<React.SVGProps<SVGSVGElement>, "strokeWidth"> & {
+export type IconProps = Omit<React.SVGProps<SVGSVGElement>, "strokeWidth"> & {
   size?: number;
   strokeWidth?: number;
 };

@@ -19,15 +19,19 @@ const columns: { heading: string; links: { label: string; href: string }[] }[] =
     links: [
       { label: "Specialist Centres", href: "/specialist-centres" },
       { label: "Nigerian Health Context", href: "/nigerian-health-context" },
-      { label: "For Hospitals & Institutions", href: "/for-hospitals" },
+      { label: "For Hospitals & Institutions", href: "/for-hospitals-institutions" },
     ],
   },
   {
     heading: "Trust & Governance",
     links: [
       { label: "About the Institute", href: "/about" },
+      { label: "Institutional Services", href: "/for-hospitals-institutions" },
+      { label: "Request a Consultation", href: "/for-hospitals-institutions#enquiry" },
       { label: "Editorial Policy", href: "/editorial-policy" },
       { label: "Medical Review Policy", href: "/medical-review-policy" },
+      { label: "Sources & Methodology", href: "/sources-methodology" },
+      { label: "Disclaimer", href: "/disclaimer" },
       { label: "Contact", href: "/contact" },
     ],
   },

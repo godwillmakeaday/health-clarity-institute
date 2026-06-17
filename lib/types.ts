@@ -13,6 +13,9 @@ export type ArticleCategory =
 
 export type UrgencyLevel = "routine" | "see-doctor" | "urgent" | "emergency";
 
+/** Editorial review status shown as an institutional badge on guide pages. */
+export type ReviewStatus = "Draft" | "In Review" | "Reviewed" | "Needs Update";
+
 export interface MedicalReviewer {
   name: string;
   credentials: string; // e.g. "MBBS, FWACP"
@@ -50,6 +53,9 @@ export interface HealthArticle {
   readingTimeMinutes: number;
   urgency: UrgencyLevel;
 
+  /** 4–6 concise, scannable facts shown in a box near the top of the page. */
+  quickFacts?: string[];
+
   overview: string[];
   symptoms?: { common: string[]; warning: string[] };
   causes?: string[];
@@ -62,11 +68,21 @@ export interface HealthArticle {
   urgentCare?: string[];
   /** Nigerian realities: cost, access, late diagnosis, self-medication, etc. */
   nigerianContext: string[];
+  /** Patient-navigation guidance: what to do at each level of concern. */
+  whatToDoNext?: {
+    mild: string;
+    worsening: string;
+    higherRisk: string;
+    atClinic: string;
+    doNotDelay: string;
+  };
   questionsForDoctor?: string[];
   faqs?: FAQ[];
   sources: Source[];
 
   reviewer: MedicalReviewer;
+  /** Editorial review status. Defaults to "Reviewed" for published guides. */
+  reviewStatus?: ReviewStatus;
   lastReviewed: string; // ISO date, e.g. "2026-04-12"
   nextReview: string; // ISO date
 }

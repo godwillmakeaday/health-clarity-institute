@@ -20,9 +20,9 @@ export const primaryNav: { label: string; href: string }[] = [
   { label: "Health Library", href: "/health-library" },
   { label: "Conditions A–Z", href: "/conditions" },
   { label: "Symptoms A–Z", href: "/symptoms" },
-  { label: "Specialist Centres", href: "/specialist-centres" },
+  { label: "Specialist Centres", href: "/centres" },
   { label: "Nigerian Context", href: "/nigerian-health-context" },
-  { label: "For Institutions", href: "/for-hospitals" },
+  { label: "For Institutions", href: "/for-hospitals-institutions" },
 ];
 
 // Section 3 — core navigation cards
@@ -97,13 +97,34 @@ export const featuredGuideSlugs = [
   "pregnancy-danger-signs",
 ];
 
-// Section 7 — patient navigation by intent
+// Section 7 — patient navigation ("Start Here")
 export const patientNavigation: { title: string; description: string; href: string }[] = [
   { title: "I have symptoms", description: "Start from what you are feeling and learn what it may mean.", href: "/symptoms" },
-  { title: "I need to understand my diagnosis", description: "Clear guides to conditions, in plain language.", href: "/conditions" },
+  { title: "I want to understand a diagnosis", description: "Clear guides to conditions, in plain language.", href: "/conditions" },
   { title: "I want to prepare for a hospital visit", description: "Questions to ask and what to bring.", href: "/conditions/hypertension#questions" },
   { title: "I want to know when it is urgent", description: "Recognise emergency warning signs early.", href: "/conditions/stroke#urgent" },
-  { title: "I need a screening guide", description: "Find out what to check and how often.", href: "/prevention" },
+  { title: "I want prevention guidance", description: "Find out what to screen for and how often.", href: "/prevention" },
+  { title: "I represent a hospital or institution", description: "See how we support health institutions and clinics.", href: "/for-hospitals-institutions" },
+];
+
+// "What Health Clarity Institute Nigeria Does" — institutional mission cards
+export const whatWeDo: { title: string; description: string; iconSlug: string }[] = [
+  { title: "Medical Education", description: "Clear, reviewed guides that help people understand conditions, tests, medicines and prevention.", iconSlug: "book" },
+  { title: "Patient Navigation", description: "Practical guidance on what to do, what to ask, and when a situation has become urgent.", iconSlug: "pulse" },
+  { title: "Nigerian Health Context", description: "Information written for the realities of cost, access and care-seeking in Nigeria.", iconSlug: "map" },
+  { title: "Specialist Intelligence", description: "Knowledge organised by area of care, drawing on specialist insight and current guidance.", iconSlug: "stethoscope" },
+  { title: "Hospital & Institutional Support", description: "Digital and editorial infrastructure for hospitals, clinics and health organisations.", iconSlug: "hospital" },
+  { title: "Preventive Health Campaigns", description: "Screening and awareness campaigns built on accurate, responsible information.", iconSlug: "shield" },
+];
+
+// "Built for Nigerian Realities" — explained points
+export const builtForRealities: { title: string; body: string }[] = [
+  { title: "Late diagnosis", body: "Many conditions are found late. We explain the early signs worth acting on, so problems are caught while they are easier to treat." },
+  { title: "Cost and access barriers", body: "Care is often paid out of pocket and a facility may be far. We are honest about what testing and treatment involve so families can plan." },
+  { title: "Self-medication risks", body: "Medicines are widely bought without a prescription. We explain when this is dangerous and when a diagnosis must come first." },
+  { title: "Family decision-making", body: "Health decisions are often made by a family, not one person. Our guidance is written to be shared and understood together." },
+  { title: "Rural and urban differences", body: "The same condition is navigated differently in a city hospital and a rural community. We acknowledge both and flag when referral is needed." },
+  { title: "Clearer patient communication", body: "Too much health information is either too technical or too vague. We aim for the middle: accurate, plain, and usable under stress." },
 ];
 
 // Section 8 — institutional services
@@ -115,6 +136,7 @@ export const institutionalServices: { title: string; description: string }[] = [
   { title: "Preventive health campaigns", description: "Screening and awareness campaigns built on accurate information." },
   { title: "Medical content strategy", description: "Editorial planning and review workflows for trustworthy health content." },
   { title: "Health documentation systems", description: "Policies, patient materials and knowledge bases, properly structured." },
+  { title: "Specialist clinic microsites", description: "Focused, credible sites for a single specialty, clinic or campaign." },
 ];
 
 // Section 9 — trust system

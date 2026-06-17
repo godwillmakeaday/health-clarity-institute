@@ -6,10 +6,16 @@ import { Container, UrgencyPill, Pill } from "@/components/ui";
 import {
   EmergencyCallout,
   NigerianContextBlock,
-  Disclaimer,
-  MetadataStrip,
 } from "@/components/callouts";
-import { CheckIcon, ArrowRightIcon, AlertIcon } from "@/components/icons";
+import { CheckIcon, ArrowRightIcon, AlertIcon, ClipboardIcon } from "@/components/icons";
+import { MedicalTrustPanel } from "@/components/MedicalTrustPanel";
+import {
+  ReviewerCard,
+  EditorialNotice,
+  DisclaimerBlock,
+  SourceList,
+  SourcesHeading,
+} from "@/components/trust";
 import {
   getConditionBySlug,
   getConditionSlugs,
@@ -74,21 +80,78 @@ function ProseList({ items }: { items: string[] }) {
   );
 }
 
-const TOC: { id: string; label: string }[] = [
-  { id: "overview", label: "Overview" },
-  { id: "symptoms", label: "Symptoms" },
-  { id: "causes", label: "Causes" },
-  { id: "risk-factors", label: "Risk factors" },
-  { id: "diagnosis", label: "Diagnosis" },
-  { id: "treatment", label: "Treatment" },
-  { id: "prevention", label: "Prevention" },
-  { id: "complications", label: "Complications" },
-  { id: "urgent", label: "When it is urgent" },
-  { id: "nigerian-context", label: "Nigerian context" },
-  { id: "questions", label: "Questions for your doctor" },
-  { id: "faqs", label: "FAQs" },
-  { id: "sources", label: "Sources" },
-];
+/** Quick facts box near the top of the page. */
+function QuickFacts({ facts }: { facts: string[] }) {
+  return (
+    <div className="rounded-lg border border-line bg-white shadow-card">
+      <div className="flex items-center gap-2.5 border-b border-line px-5 py-3">
+        <ClipboardIcon size={18} className="text-clinical-blueDark" />
+        <h2 className="font-mono text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-navy">
+          Quick facts
+        </h2>
+      </div>
+      <ul className="space-y-2.5 px-5 py-4">
+        {facts.map((f, i) => (
+          <li key={i} className="flex gap-2.5 text-[0.9rem] leading-snug text-ink/90">
+            <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-clinical-blueSoft text-clinical-blueDark">
+              <CheckIcon size={12} strokeWidth={2} />
+            </span>
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/** "What to do next" patient-navigation box. */
+function WhatToDoNext({
+  data,
+}: {
+  data: NonNullable<ReturnType<typeof getConditionBySlug>>["whatToDoNext"];
+}) {
+  if (!data) return null;
+  const rows: { label: string; value: string; tone: "calm" | "warn" | "alert" }[] = [
+    { label: "If symptoms are mild", value: data.mild, tone: "calm" },
+    { label: "If symptoms are worsening", value: data.worsening, tone: "warn" },
+    {
+      label: "If pregnant, elderly, a child, or another illness",
+      value: data.higherRisk,
+      tone: "warn",
+    },
+    { label: "What to ask at the clinic", value: data.atClinic, tone: "calm" },
+    { label: "What not to delay", value: data.doNotDelay, tone: "alert" },
+  ];
+  const dot = {
+    calm: "bg-clinical-blue",
+    warn: "bg-clinical-amber",
+    alert: "bg-clinical-red",
+  };
+  return (
+    <section id="what-next" className="scroll-mt-32 border-t border-line pt-9">
+      <h2 className="text-h2">What to do next</h2>
+      <p className="mt-3 text-[0.99rem] leading-relaxed text-slate">
+        A simple guide to acting on this — matched to how serious things are right now.
+      </p>
+      <div className="mt-5 overflow-hidden rounded-lg border border-line">
+        <dl className="divide-y divide-line">
+          {rows.map((r) => (
+            <div key={r.label} className="grid gap-1 px-5 py-4 sm:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)] sm:gap-6">
+              <dt className="flex items-start gap-2.5 font-medium text-navy">
+                <span
+                  className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${dot[r.tone]}`}
+                  aria-hidden="true"
+                />
+                {r.label}
+              </dt>
+              <dd className="text-[0.95rem] leading-relaxed text-slate sm:pt-0">{r.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  );
+}
 
 export default function ConditionPage({
   params,
@@ -109,37 +172,26 @@ export default function ConditionPage({
     )
     .slice(0, 3);
 
-  // Only show TOC rows that have content.
-  const toc = TOC.filter((t) => {
-    switch (t.id) {
-      case "symptoms":
-        return Boolean(article.symptoms);
-      case "causes":
-        return Boolean(article.causes?.length);
-      case "risk-factors":
-        return Boolean(article.riskFactors?.length);
-      case "diagnosis":
-        return Boolean(article.diagnosis?.length);
-      case "treatment":
-        return Boolean(article.treatment);
-      case "prevention":
-        return Boolean(article.prevention?.length);
-      case "complications":
-        return Boolean(article.complications?.length);
-      case "urgent":
-        return Boolean(article.urgentCare?.length);
-      case "questions":
-        return Boolean(article.questionsForDoctor?.length);
-      case "faqs":
-        return Boolean(article.faqs?.length);
-      default:
-        return true;
-    }
-  });
+  // Build the table of contents from the sections that have content.
+  const toc: { id: string; label: string; urgent?: boolean }[] = [];
+  if (article.urgentCare?.length) toc.push({ id: "urgent", label: "When it is urgent", urgent: true });
+  toc.push({ id: "overview", label: "Overview" });
+  if (article.symptoms) toc.push({ id: "symptoms", label: "Symptoms" });
+  if (article.causes?.length) toc.push({ id: "causes", label: "Causes" });
+  if (article.riskFactors?.length) toc.push({ id: "risk-factors", label: "Risk factors" });
+  if (article.diagnosis?.length) toc.push({ id: "diagnosis", label: "Diagnosis" });
+  if (article.treatment) toc.push({ id: "treatment", label: "Treatment" });
+  if (article.prevention?.length) toc.push({ id: "prevention", label: "Prevention" });
+  if (article.complications?.length) toc.push({ id: "complications", label: "Complications" });
+  toc.push({ id: "nigerian-context", label: "Nigerian context" });
+  if (article.whatToDoNext) toc.push({ id: "what-next", label: "What to do next" });
+  if (article.questionsForDoctor?.length) toc.push({ id: "questions", label: "Questions for your doctor" });
+  if (article.faqs?.length) toc.push({ id: "faqs", label: "FAQs" });
+  toc.push({ id: "sources", label: "Sources" });
 
   return (
     <>
-      {/* ── Header band */}
+      {/* ── Header band (hero summary) */}
       <section className="border-b border-line bg-offwhite">
         <Container className="py-10 md:py-14">
           <nav aria-label="Breadcrumb" className="mb-6">
@@ -176,8 +228,27 @@ export default function ConditionPage({
         </Container>
       </section>
 
+      {/* ── Top matter: Quick Facts + Trust panel + Urgent care (near the top) */}
+      <Container className="py-10 md:py-12">
+        <div className="grid gap-5 lg:grid-cols-2">
+          {article.quickFacts?.length ? <QuickFacts facts={article.quickFacts} /> : <div />}
+          <MedicalTrustPanel
+            reviewer={article.reviewer}
+            status={article.reviewStatus ?? "Reviewed"}
+            lastReviewed={article.lastReviewed}
+            emergencyHref={article.urgentCare?.length ? "#urgent" : "/disclaimer#emergency"}
+          />
+        </div>
+
+        {article.urgentCare?.length ? (
+          <div id="urgent" className="mt-5 scroll-mt-32">
+            <EmergencyCallout items={article.urgentCare} />
+          </div>
+        ) : null}
+      </Container>
+
       {/* ── Body: TOC + article */}
-      <Container className="grid gap-10 py-12 lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-14 lg:py-16">
+      <Container className="grid gap-10 pb-12 lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-14 lg:pb-16">
         {/* TOC */}
         <aside className="lg:sticky lg:top-28 lg:self-start">
           <p className="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-slate-soft">
@@ -189,7 +260,7 @@ export default function ConditionPage({
                 key={t.id}
                 href={`#${t.id}`}
                 className={`-ml-px block border-l-2 py-1.5 pl-4 text-sm no-underline transition-colors ${
-                  t.id === "urgent"
+                  t.urgent
                     ? "border-transparent text-clinical-red hover:border-clinical-red"
                     : "border-transparent text-slate hover:border-clinical-blue hover:text-clinical-blue"
                 }`}
@@ -307,17 +378,13 @@ export default function ConditionPage({
               </Section>
             ) : null}
 
-            {/* Urgent care — full-bleed callout */}
-            {article.urgentCare?.length ? (
-              <div id="urgent" className="scroll-mt-32 border-t border-line pt-9">
-                <EmergencyCallout items={article.urgentCare} />
-              </div>
-            ) : null}
-
             {/* Nigerian context — signature block */}
             <div className="scroll-mt-32 border-t border-line pt-9">
               <NigerianContextBlock items={article.nigerianContext} />
             </div>
+
+            {/* What to do next — patient navigation */}
+            <WhatToDoNext data={article.whatToDoNext} />
 
             {article.questionsForDoctor?.length ? (
               <Section id="questions" title="Questions to ask your doctor">
@@ -349,35 +416,32 @@ export default function ConditionPage({
             ) : null}
 
             {/* Sources */}
-            <Section id="sources" title="Sources">
-              <ol className="space-y-3">
-                {article.sources.map((s, i) => (
-                  <li key={i} className="text-sm leading-relaxed text-slate">
-                    <span className="font-medium text-navy">{s.label}.</span>{" "}
-                    {s.publisher}
-                    {s.year ? `, ${s.year}` : ""}.
-                    {s.url && (
-                      <>
-                        {" "}
-                        <a
-                          href={s.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="break-words"
-                        >
-                          {s.url}
-                        </a>
-                      </>
-                    )}
-                  </li>
-                ))}
-              </ol>
-            </Section>
+            <section id="sources" className="scroll-mt-32 border-t border-line pt-9">
+              <SourcesHeading />
+              <p className="mt-3 max-w-prose text-sm leading-relaxed text-slate">
+                Guides draw on recognised health institutions, clinical guidelines, public-health
+                agencies, peer-reviewed literature, and Nigerian health authorities where available.
+                See our{" "}
+                <Link href="/sources-methodology" className="link-quiet font-medium">
+                  sources &amp; methodology
+                </Link>
+                .
+              </p>
+              <div className="mt-4">
+                <SourceList sources={article.sources} />
+              </div>
+            </section>
 
-            {/* Metadata + disclaimer */}
+            {/* Trust footer: reviewer · editorial note · update policy · disclaimer */}
             <div className="space-y-5 border-t border-line pt-9">
-              <MetadataStrip article={article} />
-              <Disclaimer reviewer={article.reviewer} />
+              <ReviewerCard
+                reviewer={article.reviewer}
+                status={article.reviewStatus ?? "Reviewed"}
+                lastReviewed={article.lastReviewed}
+                nextReview={article.nextReview}
+              />
+              <EditorialNotice />
+              <DisclaimerBlock withReviewerNote />
             </div>
           </div>
 

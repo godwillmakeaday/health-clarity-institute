@@ -24,6 +24,8 @@ import {
   institutionalServices,
   trustPoints,
   featuredGuideSlugs,
+  whatWeDo,
+  builtForRealities,
 } from "@/lib/site";
 import { getConditionBySlug } from "@/lib/conditions";
 
@@ -34,6 +36,15 @@ export const metadata: Metadata = {
 };
 
 const navCardIcons = [BookIcon, PulseIcon, ClipboardIcon, PillIcon, ShieldIcon, AlertIcon, MapPinIcon, StethoscopeIcon];
+
+const whatWeDoIcons: Record<string, (p: { size?: number; className?: string }) => React.JSX.Element> = {
+  book: BookIcon,
+  pulse: PulseIcon,
+  map: MapPinIcon,
+  stethoscope: StethoscopeIcon,
+  hospital: HospitalIcon,
+  shield: ShieldIcon,
+};
 
 export default function HomePage() {
   const featured = featuredGuideSlugs
@@ -79,7 +90,7 @@ export default function HomePage() {
               Explore Conditions
             </Link>
             <Link
-              href="/for-hospitals"
+              href="/for-hospitals-institutions"
               className="inline-flex items-center gap-2 rounded border border-line bg-white px-5 py-3 text-sm font-medium text-navy no-underline transition-colors hover:border-clinical-blue"
             >
               For Hospitals & Institutions
@@ -88,8 +99,33 @@ export default function HomePage() {
         </Container>
       </section>
 
+      {/* ─────────────────────────── What Health Clarity Institute Nigeria Does */}
+      <section className="border-b border-line py-14 md:py-20">
+        <Container>
+          <SectionHeading
+            eyebrow="The institution"
+            title="What Health Clarity Institute Nigeria does"
+            intro="More than a library — a health institution built to educate patients, guide decisions, and support the organisations that deliver care."
+          />
+          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {whatWeDo.map((item) => {
+              const Icon = whatWeDoIcons[item.iconSlug] ?? BookIcon;
+              return (
+                <Card key={item.title} className="p-6">
+                  <span className="flex h-11 w-11 items-center justify-center rounded border border-clinical-blue/20 bg-clinical-blueSoft text-clinical-blueDark">
+                    <Icon size={22} />
+                  </span>
+                  <h3 className="mt-4 font-serif text-lg text-navy">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate">{item.description}</p>
+                </Card>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
       {/* ─────────────────────────────── 3. Core navigation cards */}
-      <section className="py-16 md:py-20">
+      <section className="py-14 md:py-20">
         <Container>
           <SectionHeading
             eyebrow="Where to begin"
@@ -116,7 +152,7 @@ export default function HomePage() {
       </section>
 
       {/* ─────────────────────────────── 4. Featured specialist centres */}
-      <section className="border-y border-line bg-offwhite py-16 md:py-20">
+      <section className="border-y border-line bg-offwhite py-14 md:py-20">
         <Container>
           <SectionHeading
             eyebrow="Specialist Centres"
@@ -147,60 +183,52 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* ─────────────────────────────── 5. Nigerian context layer */}
-      <section className="py-16 md:py-24">
+      {/* ─────────────────────────────── 5. Built for Nigerian Realities */}
+      <section className="py-14 md:py-24">
         <Container>
-          <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.1fr]">
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-clinical-green/25 bg-clinical-greenSoft px-3 py-1">
-                <MapPinIcon size={15} className="text-clinical-green" />
-                <span className="font-mono text-[0.66rem] font-medium uppercase tracking-[0.14em] text-clinical-green">
-                  The Nigerian context layer
-                </span>
-              </div>
-              <h2 className="mt-5 text-h2">
-                Every major guide is written for Nigerian realities — not borrowed from elsewhere.
-              </h2>
-              <p className="mt-5 text-[1.05rem] leading-relaxed text-slate">
-                Global medical facts matter, but how care actually reaches people in Nigeria is
-                different. Each guide speaks to the realities patients and families face here, so the
-                information is not only correct, but usable.
-              </p>
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-clinical-green/25 bg-clinical-greenSoft px-3 py-1">
+              <MapPinIcon size={15} className="text-clinical-green" />
+              <span className="font-mono text-[0.66rem] font-medium uppercase tracking-[0.14em] text-clinical-green">
+                Built for Nigerian realities
+              </span>
             </div>
-            <Card className="p-7">
-              <div className="grid gap-x-8 gap-y-5 sm:grid-cols-2">
-                {[
-                  "Late diagnosis and silent conditions",
-                  "Cost and access to care",
-                  "Family decision-making",
-                  "Self-medication risks",
-                  "Pharmacy and over-the-counter habits",
-                  "Rural and urban barriers",
-                  "Herbal remedy safety",
-                  "When to seek urgent care",
-                ].map((point) => (
-                  <div key={point} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-clinical-greenSoft text-clinical-green">
-                      <CheckIcon size={13} strokeWidth={2} />
-                    </span>
-                    <span className="text-[0.95rem] leading-snug text-ink/85">{point}</span>
-                  </div>
-                ))}
-              </div>
-              <Link
-                href="/nigerian-health-context"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-clinical-blueDark no-underline hover:text-clinical-blue"
-              >
-                Read about the Nigerian context layer
-                <ArrowRightIcon size={16} />
-              </Link>
-            </Card>
+            <h2 className="mt-5 text-h2">
+              Correct information is not enough — it has to work where people actually live.
+            </h2>
+            <p className="mt-5 text-[1.05rem] leading-relaxed text-slate">
+              Global medical facts matter, but how care reaches people in Nigeria is different.
+              Every major guide is written with these realities in mind, so the information is
+              not only accurate, but usable.
+            </p>
           </div>
+
+          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {builtForRealities.map((item) => (
+              <Card key={item.title} className="p-6">
+                <div className="flex items-center gap-2.5">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-clinical-greenSoft text-clinical-green">
+                    <CheckIcon size={14} strokeWidth={2} />
+                  </span>
+                  <h3 className="font-serif text-base text-navy">{item.title}</h3>
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-slate">{item.body}</p>
+              </Card>
+            ))}
+          </div>
+
+          <Link
+            href="/nigerian-health-context"
+            className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-clinical-blueDark no-underline hover:text-clinical-blue"
+          >
+            Read more about the Nigerian context layer
+            <ArrowRightIcon size={16} />
+          </Link>
         </Container>
       </section>
 
       {/* ─────────────────────────────── 6. Featured guides */}
-      <section className="border-y border-line bg-offwhite py-16 md:py-20">
+      <section className="border-y border-line bg-offwhite py-14 md:py-20">
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-4">
             <SectionHeading
@@ -239,11 +267,11 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* ─────────────────────────────── 7. Patient navigation */}
-      <section className="py-16 md:py-20">
+      {/* ─────────────────────────────── 7. Start Here */}
+      <section className="py-14 md:py-20">
         <Container>
           <SectionHeading
-            eyebrow="Patient navigation"
+            eyebrow="Start here"
             title="Start from where you are"
             intro="Different needs call for different starting points. Choose what is true for you right now."
           />
@@ -266,7 +294,7 @@ export default function HomePage() {
       </section>
 
       {/* ─────────────────────────────── 8. Institutional services */}
-      <section className="bg-navy py-16 text-white md:py-24">
+      <section className="bg-navy py-14 text-white md:py-24">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
             <div>
@@ -281,7 +309,7 @@ export default function HomePage() {
                 hospitals, clinics, NGOs, schools, companies and professionals.
               </p>
               <Link
-                href="/for-hospitals"
+                href="/for-hospitals-institutions"
                 className="mt-7 inline-flex items-center gap-2 rounded border border-white/30 bg-white px-5 py-3 text-sm font-medium text-navy no-underline transition-colors hover:bg-white/90 hover:text-navy"
               >
                 Explore institutional services
@@ -300,8 +328,61 @@ export default function HomePage() {
         </Container>
       </section>
 
+      {/* ─────────────────────────── Medical Review & Editorial Policy preview */}
+      <section className="border-t border-line py-14 md:py-20">
+        <Container>
+          <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-14">
+            <div>
+              <Eyebrow>Trust &amp; governance</Eyebrow>
+              <h2 className="mt-4 text-h2">Medical review &amp; editorial policy</h2>
+              <p className="mt-5 text-[1.05rem] leading-relaxed text-slate">
+                Our content is written for education, intended to be reviewed by qualified
+                health professionals, linked to its sources, and updated periodically. We are
+                open about how we work — and honest that nothing here replaces a clinician.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link
+                  href="/medical-review-policy"
+                  className="inline-flex items-center gap-2 rounded border border-navy bg-navy px-5 py-3 text-sm font-medium text-white no-underline transition-colors hover:bg-navy-700 hover:text-white"
+                >
+                  Medical Review Policy
+                  <ArrowRightIcon size={16} />
+                </Link>
+                <Link
+                  href="/editorial-policy"
+                  className="inline-flex items-center gap-2 rounded border border-line bg-white px-5 py-3 text-sm font-medium text-navy no-underline transition-colors hover:border-clinical-blue"
+                >
+                  Editorial Policy
+                </Link>
+              </div>
+            </div>
+
+            <Card className="p-6 md:p-7">
+              <ul className="space-y-4">
+                {[
+                  { h: "Written for education", d: "Plain-language guides to help you understand — not to diagnose or prescribe." },
+                  { h: "Intended for professional review", d: "Clinical content is prepared for sign-off by qualified reviewers." },
+                  { h: "Source-linked", d: "Each guide lists the references it is based on." },
+                  { h: "Periodically updated", d: "Every guide shows when it was last reviewed and when it is next due." },
+                ].map((row) => (
+                  <li key={row.h} className="flex gap-3">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-clinical-greenSoft text-clinical-green">
+                      <CheckIcon size={14} strokeWidth={2} />
+                    </span>
+                    <span>
+                      <span className="block text-sm font-medium text-navy">{row.h}</span>
+                      <span className="block text-sm leading-relaxed text-slate">{row.d}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </div>
+        </Container>
+      </section>
+
       {/* ─────────────────────────────── 9. Trust system */}
-      <section className="py-16 md:py-20">
+      <section className="py-14 md:py-20">
         <Container>
           <SectionHeading
             eyebrow="Why you can trust this"

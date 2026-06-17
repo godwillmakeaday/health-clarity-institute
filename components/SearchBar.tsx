@@ -7,7 +7,7 @@ import { SearchIcon } from "./icons";
 
 export function SearchBar({
   size = "lg",
-  placeholder = "Search conditions, symptoms, tests, medicines…",
+  placeholder = "Search conditions, symptoms, tests…",
 }: {
   size?: "lg" | "md";
   placeholder?: string;

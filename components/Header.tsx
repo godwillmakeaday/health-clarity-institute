@@ -36,14 +36,15 @@ export function Header() {
       <div className="bg-navy text-white">
         <Container className="flex items-center gap-2 py-1.5">
           <AlertIcon size={14} className="shrink-0 text-clinical-redSoft" />
-          <p className="font-mono text-[0.66rem] uppercase tracking-[0.1em] text-white/85">
-            In an emergency, go to the nearest hospital now — this site is for education, not urgent care.
+          <p className="text-[0.72rem] leading-snug text-white/90 sm:text-[0.78rem]">
+            <span className="font-semibold text-white">In an emergency,</span> go to the
+            nearest hospital now — this site is for education, not urgent care.
           </p>
         </Container>
       </div>
 
       <div className="border-b border-line shadow-header">
-        <Container className="flex items-center justify-between py-3.5">
+        <Container className="flex items-center justify-between py-2.5 md:py-3.5">
           <Link href="/" className="no-underline" aria-label={site.name}>
             <Monogram />
           </Link>
@@ -59,7 +60,7 @@ export function Header() {
               </Link>
             ))}
             <Link
-              href="/for-hospitals"
+              href="/for-hospitals-institutions"
               className="rounded border border-navy bg-navy px-4 py-2 text-sm font-medium text-white no-underline transition-colors hover:bg-navy-700 hover:text-white"
             >
               For Institutions

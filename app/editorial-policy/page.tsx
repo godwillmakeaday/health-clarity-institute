@@ -90,8 +90,11 @@ export default function EditorialPolicyPage() {
 
           <div className="mt-12 rounded-lg border border-line bg-offwhite p-6 text-sm leading-relaxed text-slate">
             See also our{" "}
-            <Link href="/medical-review-policy">Medical Review Policy</Link> for how clinical
-            review works, or <Link href="/contact">contact us</Link> with a correction.
+            <Link href="/medical-review-policy" className="link-quiet">Medical Review Policy</Link>{" "}
+            for how clinical review works, our{" "}
+            <Link href="/sources-methodology" className="link-quiet">Sources &amp; Methodology</Link>,
+            our <Link href="/disclaimer" className="link-quiet">Disclaimer</Link>, or{" "}
+            <Link href="/contact" className="link-quiet">contact us</Link> with a correction.
           </div>
         </div>
       </Container>
