@@ -1,39 +1,16 @@
 import * as React from "react";
 import Link from "next/link";
-import { site } from "@/lib/site";
+import { footerLinks, primaryNav, site, disclaimerShort } from "@/lib/site";
 import { Container } from "./ui";
 
 const columns: { heading: string; links: { label: string; href: string }[] }[] = [
   {
-    heading: "Health Library",
-    links: [
-      { label: "Conditions A–Z", href: "/conditions" },
-      { label: "Symptoms A–Z", href: "/symptoms" },
-      { label: "Tests & Procedures", href: "/tests-procedures" },
-      { label: "Medicines", href: "/medicines" },
-      { label: "Prevention", href: "/prevention" },
-    ],
+    heading: "Explore the Desk",
+    links: primaryNav,
   },
   {
-    heading: "Centres & Context",
-    links: [
-      { label: "Specialist Centres", href: "/specialist-centres" },
-      { label: "Nigerian Health Context", href: "/nigerian-health-context" },
-      { label: "For Hospitals & Institutions", href: "/for-hospitals-institutions" },
-    ],
-  },
-  {
-    heading: "Trust & Governance",
-    links: [
-      { label: "About the Institute", href: "/about" },
-      { label: "Institutional Services", href: "/for-hospitals-institutions" },
-      { label: "Request a Consultation", href: "/for-hospitals-institutions#enquiry" },
-      { label: "Editorial Policy", href: "/editorial-policy" },
-      { label: "Medical Review Policy", href: "/medical-review-policy" },
-      { label: "Sources & Methodology", href: "/sources-methodology" },
-      { label: "Disclaimer", href: "/disclaimer" },
-      { label: "Contact", href: "/contact" },
-    ],
+    heading: "Governance",
+    links: footerLinks,
   },
 ];
 
@@ -41,19 +18,20 @@ export function Footer() {
   return (
     <footer className="mt-24 border-t border-line bg-navy text-white/80">
       <Container className="py-14">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded border border-white/20 font-mono text-[0.78rem] font-semibold text-white">
-                HCI
+              <span className="flex h-10 w-10 items-center justify-center rounded border border-white/20 font-mono text-[0.7rem] font-semibold text-white">
+                VID
               </span>
               <span className="font-serif text-lg font-semibold text-white">
-                Health Clarity Institute Nigeria
+                The Verified Income Desk
               </span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/70">
-              A Nigerian health education, patient clarity and specialist-care intelligence
-              platform. Evidence-informed guides written to help you understand your health.
+              Internet income literacy without illusion. We test income models, document what
+              actually happens, and report it the way a briefing desk reports anything else —
+              soberly, with sources, and without a sales pitch.
             </p>
             <p className="mt-4 font-mono text-[0.7rem] uppercase tracking-[0.12em] text-white/55">
               {site.email}
@@ -82,14 +60,9 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t border-white/15 pt-6">
-          <p className="text-xs leading-relaxed text-white/60">
-            The information on Health Clarity Institute Nigeria is provided for general education
-            only. It is not a diagnosis, prescription or substitute for professional medical advice.
-            Always consult a qualified health professional about your own health, and seek urgent
-            care for any emergency.
-          </p>
+          <p className="text-xs leading-relaxed text-white/60">{disclaimerShort}</p>
           <p className="mt-4 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-white/45">
-            © {new Date().getFullYear()} {site.name}. Educational use.
+            © {new Date().getFullYear()} {site.name}. Educational use only.
           </p>
         </div>
       </Container>

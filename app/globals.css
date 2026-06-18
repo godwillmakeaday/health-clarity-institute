@@ -25,13 +25,13 @@
   }
 
   body {
-    @apply bg-white text-ink font-sans antialiased;
+    @apply bg-paper text-ink font-sans antialiased;
     font-feature-settings: "kern", "liga", "calt";
   }
 
   ::selection {
-    background-color: #cfe1f2;
-    color: #08233b;
+    background-color: #E9D9B3;
+    color: #081523;
   }
 
   h1, h2, h3, h4 {
@@ -40,15 +40,15 @@
   }
 
   a {
-    @apply text-clinical-blueDark underline-offset-2;
+    @apply text-navy underline-offset-2;
   }
 
   a:hover {
-    @apply text-clinical-blue;
+    @apply text-gold-dark;
   }
 
   :focus-visible {
-    outline: 2px solid #1567b2;
+    outline: 2px solid #A9802E;
     outline-offset: 2px;
     border-radius: 2px;
   }
@@ -62,28 +62,27 @@
   }
 
   .eyebrow {
-    @apply font-mono text-[0.72rem] font-medium uppercase tracking-[0.18em] text-clinical-blueDark;
+    @apply font-mono text-[0.72rem] font-medium uppercase tracking-[0.18em] text-gold-dark;
   }
 
   .eyebrow-muted {
-    @apply font-mono text-[0.72rem] font-medium uppercase tracking-[0.18em] text-slate;
+    @apply font-mono text-[0.72rem] font-medium uppercase tracking-[0.18em] text-charcoal-soft;
   }
 
-  /* Article prose */
-  .prose-clinical {
+  .prose-desk {
     @apply text-[1.0625rem] leading-[1.72] text-ink/90;
   }
-  .prose-clinical p {
+  .prose-desk p {
     @apply mb-4;
   }
-  .prose-clinical p:last-child {
+  .prose-desk p:last-child {
     @apply mb-0;
   }
-  .prose-clinical a {
+  .prose-desk a {
     @apply underline;
   }
 
   .link-quiet {
-    @apply no-underline text-navy hover:text-clinical-blue;
+    @apply no-underline text-navy hover:text-gold-dark;
   }
 }

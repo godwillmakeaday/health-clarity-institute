@@ -1,102 +1,105 @@
-// lib/types.ts
-// Core data model for Health Clarity Institute Nigeria.
-// Every clinical page in the platform is one HealthArticle record. This shape is
-// designed so the library can grow to hundreds or thousands of entries without
-// changing the rendering layer — new content is data, not new code.
+export type DifficultyLevel = "Beginner" | "Intermediate" | "Advanced";
+
+export type RiskLevel = "Low" | "Moderate" | "High";
+
+export type Verdict =
+  | "Worth testing"
+  | "Requires skill first"
+  | "Long-term asset"
+  | "High-risk"
+  | "Not beginner-friendly"
+  | "Avoid unless experienced";
+
+export type FilterTag =
+  | "smartphone-friendly"
+  | "beginner-friendly"
+  | "requires-writing"
+  | "requires-selling"
+  | "requires-audience"
+  | "requires-technical-skill"
+  | "low-capital"
+  | "long-term-asset"
+  | "fastest-to-test"
+  | "highest-trust-requirement";
+
+export interface FilterDef {
+  tag: FilterTag;
+  label: string;
+}
+
+export interface IncomeMethod {
+  slug: string;
+  name: string;
+  pageTitle: string;
+  dek: string;
+  summary: string;
+  whatItIs: string;
+  whoFits: string[];
+  whoDoesNotFit: string[];
+  requiredSkills: string[];
+  requiredTools: string[];
+  difficulty: DifficultyLevel;
+  timeBeforeResults: string;
+  commonLies: string[];
+  firstRealisticStep: string;
+  riskLevel: RiskLevel;
+  proofSignals: string[];
+  tags: FilterTag[];
+  first7Days: string[];
+  first30Days: string[];
+  realisticEarningPath: string;
+  failurePoints: string[];
+  ethicalBoundary: string;
+  verdict: Verdict;
+  verdictNote: string;
+}
+
+export type ExperimentStatus = "Running" | "Completed" | "Paused" | "Planned";
+
+export interface Experiment {
+  slug: string;
+  title: string;
+  hypothesis: string;
+  tools: string[];
+  cost: string;
+  timeRequired: string;
+  status: ExperimentStatus;
+  whatWorked: string[];
+  whatFailed: string[];
+  lessons: string[];
+  nextTest: string;
+}
 
 export type ArticleCategory =
-  | "condition"
-  | "symptom"
-  | "test"
-  | "medicine"
-  | "prevention";
+  | "Income Models"
+  | "Smartphone Economy"
+  | "Digital Work"
+  | "Affiliate Marketing"
+  | "Trust and Proof"
+  | "Course Economy"
+  | "Global South Internet Opportunity"
+  | "AI-Assisted Work"
+  | "Local Service Businesses"
+  | "Creator Economy"
+  | "Ethical Selling";
 
-export type UrgencyLevel = "routine" | "see-doctor" | "urgent" | "emergency";
-
-/** Editorial review status shown as an institutional badge on guide pages. */
-export type ReviewStatus = "Draft" | "In Review" | "Reviewed" | "Needs Update";
-
-export interface MedicalReviewer {
-  name: string;
-  credentials: string; // e.g. "MBBS, FWACP"
-  specialty: string; // e.g. "Internal Medicine / Cardiology"
-  institution?: string;
-}
-
-export interface Source {
-  label: string; // human-readable citation
-  publisher: string; // e.g. "World Health Organization"
-  year?: number;
-  url?: string;
-}
-
-export interface FAQ {
-  question: string;
-  answer: string;
-}
-
-/**
- * A full clinical knowledge article. Optional sections allow lighter entries
- * (e.g. a symptom or medicine page) to reuse the same record shape as a full
- * condition guide.
- */
-export interface HealthArticle {
+export interface Article {
   slug: string;
   title: string;
   category: ArticleCategory;
-  /** Short plain-language sentence used on cards and in search results. */
-  summary: string;
-  /** SEO meta description (≤ ~160 chars). */
-  metaDescription: string;
-  /** Specialist centre this article is filed under, if any. */
-  specialtyCentre?: string;
-  readingTimeMinutes: number;
-  urgency: UrgencyLevel;
-
-  /** 4–6 concise, scannable facts shown in a box near the top of the page. */
-  quickFacts?: string[];
-
-  overview: string[];
-  symptoms?: { common: string[]; warning: string[] };
-  causes?: string[];
-  riskFactors?: string[];
-  diagnosis?: string[];
-  treatment?: { lifestyle: string[]; medical: string[] };
-  prevention?: string[];
-  complications?: string[];
-  /** When to seek urgent care — safety-critical, always rendered prominently. */
-  urgentCare?: string[];
-  /** Nigerian realities: cost, access, late diagnosis, self-medication, etc. */
-  nigerianContext: string[];
-  /** Patient-navigation guidance: what to do at each level of concern. */
-  whatToDoNext?: {
-    mild: string;
-    worsening: string;
-    higherRisk: string;
-    atClinic: string;
-    doNotDelay: string;
-  };
-  questionsForDoctor?: string[];
-  faqs?: FAQ[];
-  sources: Source[];
-
-  reviewer: MedicalReviewer;
-  /** Editorial review status. Defaults to "Reviewed" for published guides. */
-  reviewStatus?: ReviewStatus;
-  lastReviewed: string; // ISO date, e.g. "2026-04-12"
-  nextReview: string; // ISO date
+  dek: string;
+  readTime: string;
+  body: string[];
 }
 
-export interface SpecialistCentre {
-  slug: string;
-  name: string;
-  focus: string;
-  description: string;
-  conditionSlugs: string[];
-}
-
-export interface NavCard {
+export interface Principle {
   title: string;
+  body: string;
+}
+
+export interface Pathway {
+  title: string;
+  audience: string;
   description: string;
-  href: string;
+  steps: { label: string; href: string }[];
 }
