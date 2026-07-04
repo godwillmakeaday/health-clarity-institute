@@ -34,15 +34,15 @@ export const metadata: Metadata = {
   },
   description: site.description,
   keywords: [
-    "internet income literacy",
-    "online income models",
-    "smartphone income Nigeria",
-    "anti-scam guide online income",
-    "realistic ways to earn online",
+    "Nigerian health information",
+    "health library Nigeria",
+    "patient education",
+    "conditions A to Z",
+    "Nigerian medical guides",
   ],
   openGraph: {
     type: "website",
-    locale: "en",
+    locale: "en_NG",
     siteName: site.name,
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${newsreader.variable} ${plexSans.variable} ${plexMono.variable}`}>
+    <html lang="en-NG" className={`${newsreader.variable} ${plexSans.variable} ${plexMono.variable}`}>
       <body>
         <a
           href="#main"

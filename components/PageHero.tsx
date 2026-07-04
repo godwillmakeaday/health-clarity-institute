@@ -18,7 +18,9 @@ export function PageHero({
         <div className="max-w-3xl">
           <Eyebrow>{eyebrow}</Eyebrow>
           <h1 className="mt-4 text-h1">{title}</h1>
-          {lede && <p className="mt-5 text-[1.1rem] leading-relaxed text-charcoal-soft">{lede}</p>}
+          {lede && (
+            <p className="mt-5 text-[1.15rem] leading-relaxed text-slate">{lede}</p>
+          )}
           {children && <div className="mt-7">{children}</div>}
         </div>
       </Container>

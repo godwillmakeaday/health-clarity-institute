@@ -1,6 +1,7 @@
+// components/ui.tsx
 import * as React from "react";
 import Link from "next/link";
-import type { DifficultyLevel, RiskLevel, Verdict } from "@/lib/types";
+import type { UrgencyLevel } from "@/lib/types";
 
 export function Container({
   children,
@@ -37,7 +38,7 @@ export function SectionHeading({
     <div className={`max-w-prose ${className}`}>
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
       <h2 className="mt-3 text-h2">{title}</h2>
-      {intro && <p className="mt-3 text-[1.05rem] leading-relaxed text-charcoal-soft">{intro}</p>}
+      {intro && <p className="mt-3 text-[1.05rem] leading-relaxed text-slate">{intro}</p>}
     </div>
   );
 }
@@ -70,82 +71,53 @@ export function LinkCard({
   return (
     <Link
       href={href}
-      className={`group block rounded-lg border border-line bg-white shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/50 hover:shadow-cardHover no-underline ${className}`}
+      className={`group block rounded-lg border border-line bg-white shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:border-clinical-blue/40 hover:shadow-cardHover no-underline ${className}`}
     >
       {children}
     </Link>
   );
 }
 
-export function Pill({
-  children,
-  tone = "navy",
-}: {
-  children: React.ReactNode;
-  tone?: "navy" | "gold" | "trust" | "warn" | "neutral";
-}) {
-  const tones: Record<string, string> = {
-    navy: "bg-navy/[0.07] text-navy",
-    gold: "bg-gold-soft text-gold-dark",
-    trust: "bg-trust-soft text-trust",
-    warn: "bg-warn-soft text-warn",
-    neutral: "bg-grey-100 text-charcoal-soft",
-  };
+const urgencyMap: Record<
+  UrgencyLevel,
+  { label: string; cls: string }
+> = {
+  routine: { label: "Routine care", cls: "bg-clinical-greenSoft text-clinical-green" },
+  "see-doctor": { label: "See a clinician", cls: "bg-clinical-blueSoft text-clinical-blueDark" },
+  urgent: { label: "Often urgent", cls: "bg-clinical-amberSoft text-clinical-amber" },
+  emergency: { label: "Emergency-level", cls: "bg-clinical-redSoft text-clinical-red" },
+};
+
+export function UrgencyPill({ level }: { level: UrgencyLevel }) {
+  const u = urgencyMap[level];
   return (
     <span
-      className={`inline-flex items-center rounded-full px-3 py-1 font-mono text-[0.66rem] font-medium uppercase tracking-[0.08em] ${tones[tone]}`}
+      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[0.68rem] font-medium uppercase tracking-[0.08em] ${u.cls}`}
     >
-      {children}
+      <span className="h-1.5 w-1.5 rounded-full bg-current" aria-hidden="true" />
+      {u.label}
     </span>
   );
 }
 
-const difficultyTone: Record<DifficultyLevel, "trust" | "gold" | "navy"> = {
-  Beginner: "trust",
-  Intermediate: "gold",
-  Advanced: "navy",
-};
-
-export function DifficultyBadge({ level }: { level: DifficultyLevel }) {
-  return <Pill tone={difficultyTone[level]}>{level}</Pill>;
-}
-
-const riskTone: Record<RiskLevel, "trust" | "gold" | "warn"> = {
-  Low: "trust",
-  Moderate: "gold",
-  High: "warn",
-};
-
-export function RiskBadge({ level }: { level: RiskLevel }) {
-  return <Pill tone={riskTone[level]}>{level} risk</Pill>;
-}
-
-const verdictTone: Record<Verdict, "trust" | "gold" | "navy" | "warn"> = {
-  "Worth testing": "trust",
-  "Requires skill first": "gold",
-  "Long-term asset": "navy",
-  "High-risk": "warn",
-  "Not beginner-friendly": "warn",
-  "Avoid unless experienced": "warn",
-};
-
-export function VerdictBadge({ verdict }: { verdict: Verdict }) {
-  return <Pill tone={verdictTone[verdict]}>{verdict}</Pill>;
-}
-
-export function ScoreBadge({
-  label,
-  value,
-  tone = "navy",
+export function Pill({
+  children,
+  tone = "blue",
 }: {
-  label: string;
-  value: string;
-  tone?: "navy" | "gold" | "trust" | "warn" | "neutral";
+  children: React.ReactNode;
+  tone?: "blue" | "green" | "navy" | "neutral";
 }) {
+  const tones = {
+    blue: "bg-clinical-blueSoft text-clinical-blueDark",
+    green: "bg-clinical-greenSoft text-clinical-green",
+    navy: "bg-navy/5 text-navy",
+    neutral: "bg-offwhite text-slate",
+  };
   return (
-    <div className="flex flex-col gap-1 border-l border-line pl-3 first:border-l-0 first:pl-0">
-      <span className="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-charcoal-soft">{label}</span>
-      <Pill tone={tone}>{value}</Pill>
-    </div>
+    <span
+      className={`inline-flex items-center rounded-full px-3 py-1 font-mono text-[0.68rem] font-medium uppercase tracking-[0.08em] ${tones[tone]}`}
+    >
+      {children}
+    </span>
   );
 }

@@ -1,8 +1,8 @@
 {
-  "name": "verified-income-desk",
+  "name": "health-clarity-institute",
   "version": "0.1.0",
   "private": true,
-  "description": "The Verified Income Desk — proof-based internet income literacy for people building from real conditions, not fantasies.",
+  "description": "Health Clarity Institute Nigeria — a Nigerian health education and patient-navigation platform.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "14.2.35",
+    "next": "14.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
