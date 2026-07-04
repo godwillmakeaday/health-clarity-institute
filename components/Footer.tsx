@@ -19,6 +19,7 @@ const columns: { heading: string; links: { label: string; href: string }[] }[] =
     links: [
       { label: "Specialist Centres", href: "/specialist-centres" },
       { label: "Nigerian Health Context", href: "/nigerian-health-context" },
+      { label: "Medical Law & Patient Rights", href: "/medical-law-patient-rights" },
       { label: "For Hospitals & Institutions", href: "/for-hospitals-institutions" },
     ],
   },

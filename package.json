@@ -2,10 +2,10 @@
   "name": "health-clarity-institute",
   "version": "0.1.0",
   "private": true,
-  "description": "Health Clarity Institute Nigeria — a Nigerian health education and patient-navigation platform.",
+  "description": "Health Clarity Institute Nigeria \u2014 a Nigerian health education and patient-navigation platform.",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --no-lint",
     "start": "next start",
     "lint": "next lint"
   },

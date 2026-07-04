@@ -21,8 +21,8 @@ export const primaryNav: { label: string; href: string }[] = [
   { label: "Conditions A–Z", href: "/conditions" },
   { label: "Symptoms A–Z", href: "/symptoms" },
   { label: "Specialist Centres", href: "/centres" },
+  { label: "Patient Rights", href: "/medical-law-patient-rights" },
   { label: "Nigerian Context", href: "/nigerian-health-context" },
-  { label: "For Institutions", href: "/for-hospitals-institutions" },
 ];
 
 // Section 3 — core navigation cards
@@ -34,6 +34,7 @@ export const coreNavCards: NavCard[] = [
   { title: "Prevention Guides", description: "Screening, vaccines and habits that lower your risk.", href: "/prevention" },
   { title: "Emergency Warning Signs", description: "Signs that mean you should seek urgent care now.", href: "/conditions/stroke" },
   { title: "Nigerian Health Context", description: "Cost, access, late diagnosis and decisions families face.", href: "/nigerian-health-context" },
+  { title: "Medical Law & Patient Rights", description: "Consent, records, dignity, billing and hospital-dispute clarity.", href: "/medical-law-patient-rights" },
   { title: "Specialist Centres", description: "Curated knowledge organised by area of care.", href: "/specialist-centres" },
 ];
 
@@ -104,6 +105,7 @@ export const patientNavigation: { title: string; description: string; href: stri
   { title: "I want to prepare for a hospital visit", description: "Questions to ask and what to bring.", href: "/conditions/hypertension#questions" },
   { title: "I want to know when it is urgent", description: "Recognise emergency warning signs early.", href: "/conditions/stroke#urgent" },
   { title: "I want prevention guidance", description: "Find out what to screen for and how often.", href: "/prevention" },
+  { title: "I have a patient-rights concern", description: "Understand consent, records, documentation and complaint pathways.", href: "/medical-law-patient-rights" },
   { title: "I represent a hospital or institution", description: "See how we support health institutions and clinics.", href: "/for-hospitals-institutions" },
 ];
 

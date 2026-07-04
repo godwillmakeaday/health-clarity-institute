@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "Evidence-informed health guides, patient navigation, specialist insight and Nigerian-context medical education from Health Clarity Institute Nigeria.",
 };
 
-const navCardIcons = [BookIcon, PulseIcon, ClipboardIcon, PillIcon, ShieldIcon, AlertIcon, MapPinIcon, StethoscopeIcon];
+const navCardIcons = [BookIcon, PulseIcon, ClipboardIcon, PillIcon, ShieldIcon, AlertIcon, MapPinIcon, ShieldIcon, StethoscopeIcon];
 
 const whatWeDoIcons: Record<string, (p: { size?: number; className?: string }) => React.JSX.Element> = {
   book: BookIcon,

@@ -7,7 +7,9 @@ Router)**, **TypeScript** and **Tailwind CSS**.
 The platform provides reviewed, plain-language medical guides with a recurring
 **Nigerian context** layer (cost, access, late diagnosis, self-medication and
 when to seek urgent care), organised into specialist centres and a searchable
-health library designed to scale to thousands of entries.
+health library designed to scale to thousands of entries. It also includes a
+public **Medical Law & Patient Rights Clarity** layer for consent, records,
+dignity, billing, confidentiality and hospital-dispute awareness.
 
 ---
 
@@ -47,7 +49,8 @@ app/                         App Router pages
   prevention/page.tsx        Prevention Guides A–Z
   specialist-centres/page.tsx
   nigerian-health-context/page.tsx
-  for-hospitals/page.tsx     Institutional services
+  medical-law-patient-rights/page.tsx
+  for-hospitals-institutions/page.tsx     Institutional services
   about/page.tsx
   editorial-policy/page.tsx
   medical-review-policy/page.tsx
@@ -87,9 +90,11 @@ that can later be promoted to full `HealthArticle` records.
   prominently where relevant.
 - **Reviewer & review dates are placeholders** pending real clinical sign-off,
   as stated on each guide and in the Medical Review Policy.
-- **Design system:** Newsreader (serif headings), IBM Plex Sans (body) and IBM
-  Plex Mono (clinical metadata), on a navy / medical-blue / clinical-green
-  palette over warm off-white. Tokens live in `tailwind.config.ts`.
+- **Design system:** Serif headings, clean sans body text and mono clinical
+  metadata, on a navy / medical-blue / clinical-green palette over warm
+  off-white. Font fallbacks are defined locally so production builds do not
+  depend on fetching Google Fonts at build time. Tokens live in
+  `tailwind.config.ts`.
 
 ---
 
