@@ -17,13 +17,15 @@ export const site = {
 };
 
 export const primaryNav: { label: string; href: string }[] = [
+  { label: "Home", href: "/" },
   { label: "Health Library", href: "/health-library" },
   { label: "Conditions A–Z", href: "/conditions" },
   { label: "Symptoms A–Z", href: "/symptoms" },
   { label: "Specialist Centres", href: "/centres" },
   { label: "Patient Rights", href: "/medical-law-patient-rights" },
   { label: "Nigerian Context", href: "/nigerian-health-context" },
-{ label: "Access Infrastructure", href: "/access-infrastructure-desk" },
+  { label: "Access Infrastructure", href: "/access-infrastructure-desk" },
+  { label: "Health Watch", href: "/health-clarity-watch" },
 ];
 
 // Section 3 — core navigation cards
