@@ -21,7 +21,7 @@ import {
   getConditionSlugs,
   getAllConditions,
 } from "@/lib/conditions";
-import { getCentreBySlug } from "@/lib/site";
+import { getCentreBySlug, getSpecialistCentreRoute } from "@/lib/site";
 
 export function generateStaticParams() {
   return getConditionSlugs().map((slug) => ({ slug }));
@@ -164,6 +164,7 @@ export default function ConditionPage({
   const centre = article.specialtyCentre
     ? getCentreBySlug(article.specialtyCentre)
     : undefined;
+  const centreRoute = centre?.slug ? getSpecialistCentreRoute(centre.slug) : undefined;
 
   const related = getAllConditions()
     .filter((c) => c.slug !== article.slug)
@@ -225,6 +226,30 @@ export default function ConditionPage({
           <p className="mt-4 max-w-2xl text-[1.15rem] leading-relaxed text-slate">
             {article.summary}
           </p>
+
+          {centre && (
+            <div className="mt-6 max-w-2xl rounded-lg border border-line bg-white p-5 shadow-card">
+              <p className="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-slate-soft">
+                Related pathway
+              </p>
+              <div className="mt-3 flex flex-wrap gap-3">
+                <Link
+                  href={centreRoute ?? `/specialist-centres#${centre.slug}`}
+                  className="inline-flex items-center gap-2 text-sm font-medium text-clinical-blueDark hover:text-clinical-blue"
+                >
+                  Open {centre.name} pathway
+                  <ArrowRightIcon size={15} className="transition-transform group-hover:translate-x-0.5" />
+                </Link>
+                <Link
+                  href="/for-hospitals-institutions"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-navy hover:text-clinical-blue"
+                >
+                  Explore institutional journey
+                  <ArrowRightIcon size={15} className="transition-transform group-hover:translate-x-0.5" />
+                </Link>
+              </div>
+            </div>
+          )}
         </Container>
       </section>
 

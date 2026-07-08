@@ -91,6 +91,19 @@ export function getCentreBySlug(slug: string) {
   return specialistCentres.find((c) => c.slug === slug);
 }
 
+export function getSpecialistCentreRoute(slug: string) {
+  const routeBySlug: Record<string, string> = {
+    "heart-blood-pressure": "/centres/heart-blood-pressure",
+    "diabetes-metabolic": "/centres/diabetes-metabolic-health",
+    "maternal-health": "/centres/maternal-health",
+    "kidney-health": "/centres/kidney-health",
+    "mental-behavioural": "/centres/mental-behavioural-health",
+    "preventive-health": "/centres/preventive-health",
+  };
+
+  return routeBySlug[slug] ?? `/specialist-centres#${slug}`;
+}
+
 // Section 6 — featured guides on the homepage
 export const featuredGuideSlugs = [
   "hypertension",

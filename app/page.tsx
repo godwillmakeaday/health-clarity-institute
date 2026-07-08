@@ -26,6 +26,7 @@ import {
   featuredGuideSlugs,
   whatWeDo,
   builtForRealities,
+  getSpecialistCentreRoute,
 } from "@/lib/site";
 import { getConditionBySlug } from "@/lib/conditions";
 
@@ -245,24 +246,47 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((c) => (
-              <LinkCard key={c.slug} href={`/conditions/${c.slug}`} className="flex flex-col p-6">
-                <div className="flex items-center justify-between">
-                  <UrgencyPill level={c.urgency} />
-                  <span className="font-mono text-[0.62rem] uppercase tracking-wide text-slate-soft">
-                    {c.readingTimeMinutes} min
-                  </span>
-                </div>
-                <h3 className="mt-4 font-serif text-xl text-navy group-hover:text-clinical-blue">
-                  {c.title}
-                </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-slate">{c.summary}</p>
-                <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-clinical-blueDark">
-                  Read the guide
-                  <ArrowRightIcon size={16} className="transition-transform group-hover:translate-x-0.5" />
-                </span>
-              </LinkCard>
-            ))}
+            {featured.map((c) => {
+              const centreRoute = getSpecialistCentreRoute(c.specialtyCentre ?? "");
+
+              return (
+                <Card key={c.slug} className="flex h-full flex-col p-6">
+                  <Link href={`/conditions/${c.slug}`} className="group flex flex-1 flex-col">
+                    <div className="flex items-center justify-between">
+                      <UrgencyPill level={c.urgency} />
+                      <span className="font-mono text-[0.62rem] uppercase tracking-wide text-slate-soft">
+                        {c.readingTimeMinutes} min
+                      </span>
+                    </div>
+                    <h3 className="mt-4 font-serif text-xl text-navy group-hover:text-clinical-blue">
+                      {c.title}
+                    </h3>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-slate">{c.summary}</p>
+                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-clinical-blueDark">
+                      Read the guide
+                      <ArrowRightIcon size={16} className="transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </Link>
+
+                  <div className="mt-5 flex flex-wrap gap-2 border-t border-line pt-4">
+                    {centreRoute && (
+                      <Link
+                        href={centreRoute}
+                        className="text-sm font-medium text-clinical-blueDark hover:text-clinical-blue"
+                      >
+                        Centre pathway
+                      </Link>
+                    )}
+                    <Link
+                      href="/for-hospitals-institutions"
+                      className="text-sm font-medium text-slate hover:text-clinical-blue"
+                    >
+                      Institutional journey
+                    </Link>
+                  </div>
+                </Card>
+              );
+            })}
           </div>
         </Container>
       </section>
