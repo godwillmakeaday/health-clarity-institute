@@ -1948,6 +1948,743 @@ export const conditions: HealthArticle[] = [
     lastReviewed: "2026-05-28",
     nextReview: "2027-05-28",
   },
+  // ---------------------------------------------------------------------------
+  // ASTHMA
+  {
+    slug: "asthma",
+    title: "Asthma",
+    category: "condition",
+    specialtyCentre: "respiratory-health",
+    summary:
+      "A long-term breathing condition where the airways become narrow, swollen or sensitive, causing wheeze, cough, chest tightness or shortness of breath.",
+    metaDescription:
+      "Educational guide to asthma symptoms, warning signs, triggers, hospital preparation, inhaler awareness, records to keep and when to seek urgent care.",
+    readingTimeMinutes: 9,
+    urgency: "see-doctor",
+    overview: [
+      "Asthma is a long-term breathing condition that affects the airways. The airways can become inflamed, narrow or sensitive, making it harder for air to move in and out of the lungs.",
+      "Symptoms may come and go. Some people feel well most days but suddenly worsen when exposed to dust, smoke, cold air, infection, exercise, strong smells or other triggers.",
+      "This guide is for education and hospital-visit preparation. It does not diagnose asthma, prescribe inhalers or replace care from a qualified health professional.",
+    ],
+    symptoms: {
+      common: [
+        "Wheezing or noisy breathing",
+        "Cough, especially at night or early morning",
+        "Chest tightness",
+        "Shortness of breath",
+        "Breathing symptoms after exercise, dust, smoke or cold air",
+      ],
+      warning: [
+        "Severe breathlessness or difficulty speaking full sentences",
+        "Blue lips, extreme tiredness, confusion or collapse",
+        "Symptoms that are getting worse despite usual medicines",
+        "A child struggling to breathe, breathing very fast or becoming unusually quiet",
+      ],
+    },
+    causes: [
+      "Asthma is linked to airway inflammation and sensitivity. Triggers vary from person to person.",
+      "Common triggers include dust, smoke, fumes, respiratory infections, cold air, exercise, pollen, mould, animal dander and strong odours.",
+      "Family history of asthma, allergies or eczema may increase risk.",
+    ],
+    riskFactors: [
+      "Family history of asthma or allergy",
+      "Exposure to tobacco smoke, indoor smoke, dust or air pollution",
+      "Repeated chest infections or allergic conditions",
+      "Occupational exposure to fumes, chemicals or dust",
+    ],
+    diagnosis: [
+      "A clinician may ask about symptoms, timing, triggers, family history and response to previous medicines.",
+      "Breathing tests such as peak flow or spirometry may be discussed where available.",
+      "Asthma should not be self-diagnosed from wheeze alone, because infections, heart problems and other lung conditions can also affect breathing.",
+    ],
+    treatment: {
+      lifestyle: [
+        "Learn your personal triggers and reduce exposure where possible",
+        "Avoid tobacco smoke and indoor smoke",
+        "Keep follow-up visits, especially after a severe attack",
+        "Use an asthma action plan if one is provided by a clinician",
+      ],
+      medical: [
+        "Asthma medicines and inhalers should be chosen and explained by a qualified clinician.",
+        "Some inhalers are for quick relief, while others are for long-term control. Patients should ask how and when each medicine should be used.",
+        "Inhaler technique matters. Ask a nurse, doctor or pharmacist to watch you use it and correct your technique.",
+      ],
+    },
+    prevention: [
+      "Avoid known triggers where possible",
+      "Treat respiratory infections early when symptoms worsen",
+      "Keep medicines available as advised by your clinician",
+      "Do not stop controller medicines without professional advice",
+    ],
+    complications: [
+      "Severe asthma attacks",
+      "Frequent school or work absence",
+      "Poor sleep and reduced activity",
+      "Emergency hospital visits if control is poor",
+    ],
+    urgentCare: [
+      "Seek urgent care if breathing is severe, speech is difficult, lips look blue, the person is confused or unusually weak, or symptoms are rapidly worsening.",
+      "Do not wait at home for severe breathing difficulty to settle on its own.",
+    ],
+    nigerianContext: [
+      "In Nigeria, smoke from cooking fuels, traffic fumes, dust, harmattan, workplace exposures and delayed access to inhalers may worsen asthma control.",
+      "Many people treat repeated cough or wheeze as infection alone. Recurrent breathing symptoms should be discussed with a clinician.",
+      "Keeping a record of attacks, triggers, medicines and hospital visits helps clinicians understand the pattern.",
+    ],
+    quickFacts: [
+      "Asthma symptoms can come and go",
+      "Wheeze is common, but not every wheeze is asthma",
+      "Inhaler technique is part of effective care",
+      "Severe breathing difficulty needs urgent attention",
+    ],
+    whatToDoNext: {
+      mild: "If symptoms are mild and recurring, write down when they happen, possible triggers and medicines already used, then arrange a clinical review.",
+      worsening: "If breathing symptoms are increasing, night cough is frequent or usual medicines are not helping, seek prompt medical review.",
+      higherRisk: "Children, pregnant people, elderly people and those with previous severe attacks need closer attention.",
+      atClinic: "Ask whether this could be asthma, what triggers to avoid, how to use inhalers correctly, and what signs mean urgent care.",
+      doNotDelay: "Do not delay care for severe breathlessness, blue lips, confusion, collapse or a child struggling to breathe.",
+    },
+    questionsForDoctor: [
+      "Could these symptoms be asthma or another breathing problem?",
+      "Do I need a peak flow or spirometry test?",
+      "What triggers should I watch for?",
+      "Which inhaler is for quick relief and which is for control?",
+      "Can you check my inhaler technique?",
+    ],
+    faqs: [
+      {
+        question: "Can asthma be cured?",
+        answer:
+          "Asthma is usually controlled rather than cured. Many people live well with proper review, trigger awareness and medicines prescribed by a clinician.",
+      },
+      {
+        question: "Is every cough asthma?",
+        answer:
+          "No. Cough has many causes. Recurrent cough with wheeze, chest tightness or shortness of breath should be assessed by a clinician.",
+      },
+    ],
+    sources: [
+      { label: "Asthma fact sheet", publisher: "World Health Organization", year: 2026, url: "https://www.who.int/news-room/fact-sheets/detail/asthma" },
+      { label: "Asthma action plan information", publisher: "National Heart, Lung, and Blood Institute", year: 2024 },
+    ],
+    reviewer: { name: "Reviewer name (placeholder)", credentials: "MBBS, FMCP", specialty: "Respiratory Medicine / Family Medicine" },
+    lastReviewed: "2026-07-08",
+    nextReview: "2027-07-08",
+  },
+
+  // ---------------------------------------------------------------------------
+  // TYPHOID FEVER
+  {
+    slug: "typhoid-fever",
+    title: "Typhoid Fever",
+    category: "condition",
+    specialtyCentre: "infectious-disease",
+    summary:
+      "A serious bacterial infection usually spread through contaminated food or water, often causing fever, weakness, headache and abdominal symptoms.",
+    metaDescription:
+      "Educational guide to typhoid fever symptoms, testing, warning signs, food and water safety, hospital preparation and records to keep.",
+    readingTimeMinutes: 9,
+    urgency: "see-doctor",
+    overview: [
+      "Typhoid fever is an infection caused by Salmonella Typhi. It is commonly linked to contaminated food or water and poor sanitation.",
+      "Symptoms can resemble malaria and other infections, so testing and clinical assessment matter.",
+      "This guide is educational. It does not confirm typhoid, prescribe antibiotics or replace a licensed health professional.",
+    ],
+    symptoms: {
+      common: [
+        "Fever that may persist or rise gradually",
+        "Headache and weakness",
+        "Stomach pain",
+        "Loss of appetite",
+        "Constipation or diarrhoea",
+        "Cough or general body discomfort",
+      ],
+      warning: [
+        "Persistent high fever with severe weakness",
+        "Confusion, drowsiness or fainting",
+        "Severe abdominal pain or swelling",
+        "Blood in stool, persistent vomiting or signs of dehydration",
+      ],
+    },
+    causes: [
+      "Typhoid fever spreads when food or water is contaminated with Salmonella Typhi.",
+      "Risk rises where water safety, sanitation and hand hygiene are poor.",
+      "Close household exposure can occur if hygiene is poor around an infected person.",
+    ],
+    riskFactors: [
+      "Unsafe drinking water",
+      "Food prepared in unhygienic conditions",
+      "Poor handwashing after toilet use",
+      "Living in or travelling to areas where typhoid is common",
+    ],
+    diagnosis: [
+      "A clinician may request blood, stool or other tests depending on availability and stage of illness.",
+      "Typhoid should not be assumed from fever alone because malaria and other infections may look similar.",
+      "Keep previous test results because repeated testing without continuity can confuse care.",
+    ],
+    treatment: {
+      lifestyle: [
+        "Rest and maintain fluids as advised by a clinician",
+        "Use safe water and careful food hygiene",
+        "Avoid preparing food for others while acutely unwell where possible",
+      ],
+      medical: [
+        "Antibiotics, when needed, should be selected by a qualified professional because resistance patterns matter.",
+        "Do not share leftover antibiotics or stop prescribed antibiotics without advice.",
+      ],
+    },
+    prevention: [
+      "Drink safe water",
+      "Eat food that is properly cooked and served hot",
+      "Wash hands with soap after toilet use and before food preparation",
+      "Discuss vaccination where relevant, especially for travel or higher-risk settings",
+    ],
+    complications: [
+      "Dehydration",
+      "Severe weakness and prolonged illness",
+      "Intestinal bleeding or perforation in severe untreated cases",
+      "Relapse if treatment is incomplete or ineffective",
+    ],
+    urgentCare: [
+      "Seek urgent care for persistent high fever, confusion, severe abdominal pain, blood in stool, repeated vomiting or dehydration.",
+      "Do not treat prolonged fever repeatedly at home without proper assessment.",
+    ],
+    nigerianContext: [
+      "Typhoid is commonly suspected in Nigeria, but many fevers are not typhoid. Testing and clinical review help avoid wrong assumptions.",
+      "Cost concerns may make people use partial antibiotics. This can worsen resistance and delay proper care.",
+      "Keeping records of fever dates, tests, medicines and response helps clinicians decide next steps.",
+    ],
+    quickFacts: [
+      "Typhoid is usually linked to contaminated food or water",
+      "Fever alone does not prove typhoid",
+      "Antibiotic choice should be professional",
+      "Food and water safety are central to prevention",
+    ],
+    whatToDoNext: {
+      mild: "If fever is early, write down the start date, temperature pattern, stomach symptoms and medicines already taken, then seek clinical guidance.",
+      worsening: "If fever persists, weakness increases or abdominal symptoms worsen, arrange prompt review.",
+      higherRisk: "Children, pregnant people, elderly people and people with dehydration need closer attention.",
+      atClinic: "Ask which tests are appropriate, whether malaria or other infections should also be checked, and how to complete medicines safely.",
+      doNotDelay: "Do not delay care for confusion, severe abdominal pain, blood in stool, persistent vomiting or dehydration.",
+    },
+    questionsForDoctor: [
+      "Does this look like typhoid, malaria or another infection?",
+      "Which test is most useful at this stage?",
+      "What should I do if the fever does not improve?",
+      "How should I prevent spread at home?",
+      "What records should I keep for follow-up?",
+    ],
+    faqs: [
+      {
+        question: "Can typhoid be diagnosed from symptoms alone?",
+        answer:
+          "No. Symptoms overlap with many infections. A clinician combines history, examination and tests where appropriate.",
+      },
+      {
+        question: "Should I use leftover antibiotics?",
+        answer:
+          "No. Antibiotics should be selected and completed under professional guidance because wrong or partial use can cause harm.",
+      },
+    ],
+    sources: [
+      { label: "Typhoid fever symptoms", publisher: "Centers for Disease Control and Prevention", year: 2025, url: "https://www.cdc.gov/typhoid-fever/signs-symptoms/index.html" },
+      { label: "Typhoid fever prevention", publisher: "Centers for Disease Control and Prevention", year: 2025 },
+    ],
+    reviewer: { name: "Reviewer name (placeholder)", credentials: "MBBS, FWACP", specialty: "Infectious Disease / Family Medicine" },
+    lastReviewed: "2026-07-08",
+    nextReview: "2027-07-08",
+  },
+
+  // ---------------------------------------------------------------------------
+  // PNEUMONIA
+  {
+    slug: "pneumonia",
+    title: "Pneumonia",
+    category: "condition",
+    specialtyCentre: "respiratory-health",
+    summary:
+      "An infection or inflammation of the lungs that can cause cough, fever, fast breathing, chest pain and difficulty breathing.",
+    metaDescription:
+      "Educational guide to pneumonia symptoms, danger signs, hospital preparation, tests, vaccination awareness and Nigerian access context.",
+    readingTimeMinutes: 9,
+    urgency: "see-doctor",
+    overview: [
+      "Pneumonia affects the lungs and can make breathing difficult. It may be caused by bacteria, viruses or other organisms.",
+      "Children, older adults, pregnant people and people with chronic illness can become seriously ill faster.",
+      "This guide is for education and preparation only. It does not diagnose pneumonia or replace urgent care when breathing is difficult.",
+    ],
+    symptoms: {
+      common: [
+        "Cough",
+        "Fever or chills",
+        "Fast breathing",
+        "Chest discomfort or pain",
+        "Shortness of breath",
+        "Tiredness, poor feeding or reduced activity in children",
+      ],
+      warning: [
+        "Difficult or very fast breathing",
+        "Bluish lips, severe weakness, confusion or collapse",
+        "Chest indrawing in a child",
+        "Persistent fever with worsening cough or breathlessness",
+      ],
+    },
+    causes: [
+      "Pneumonia can be caused by bacteria, viruses or other germs.",
+      "Some cases follow flu-like illness, measles, whooping cough or other respiratory infections.",
+      "Smoke exposure, poor nutrition and weak immunity can increase risk.",
+    ],
+    riskFactors: [
+      "Young children and older adults",
+      "Chronic lung, heart, kidney or immune conditions",
+      "Exposure to smoke or indoor air pollution",
+      "Incomplete vaccination where vaccines are available",
+    ],
+    diagnosis: [
+      "A clinician may check breathing rate, oxygen level and chest signs.",
+      "Chest X-ray, blood tests or sputum tests may be discussed depending on severity and availability.",
+      "Pneumonia should not be treated casually when breathing is fast or difficult.",
+    ],
+    treatment: {
+      lifestyle: [
+        "Rest and fluids may support recovery, but they do not replace medical assessment for serious symptoms.",
+        "Avoid smoke exposure during respiratory illness.",
+      ],
+      medical: [
+        "Some pneumonia needs antibiotics, oxygen or hospital care. The correct plan depends on assessment by a clinician.",
+        "Children with danger signs need prompt professional attention.",
+      ],
+    },
+    prevention: [
+      "Vaccination against relevant infections reduces pneumonia risk",
+      "Reduce smoke exposure",
+      "Practice hand hygiene and cough etiquette",
+      "Seek care early when respiratory symptoms worsen",
+    ],
+    complications: [
+      "Low oxygen",
+      "Sepsis or severe infection",
+      "Fluid around the lungs",
+      "Worsening of existing heart or lung disease",
+    ],
+    urgentCare: [
+      "Seek urgent care for difficult breathing, blue lips, confusion, chest indrawing in a child, severe weakness or inability to drink.",
+      "Do not wait at home when breathing is visibly laboured.",
+    ],
+    nigerianContext: [
+      "Indoor smoke, delayed care, transport distance, cost and late oxygen access can make pneumonia more dangerous.",
+      "Families should keep immunization cards and previous hospital notes, especially for children.",
+      "Cough mixtures alone may delay care when breathing is fast, difficult or associated with fever.",
+    ],
+    quickFacts: [
+      "Pneumonia can become serious quickly",
+      "Fast or difficult breathing is a danger sign",
+      "Vaccination helps prevent some causes",
+      "Children with chest indrawing need urgent attention",
+    ],
+    whatToDoNext: {
+      mild: "If cough and fever are mild, monitor breathing, hydration and temperature, and seek review if symptoms persist or worsen.",
+      worsening: "If cough, fever or breathing difficulty worsens, arrange prompt medical assessment.",
+      higherRisk: "Children, older adults, pregnant people and people with chronic disease need earlier review.",
+      atClinic: "Ask whether oxygen level, chest examination, X-ray or other tests are needed and what signs should trigger return.",
+      doNotDelay: "Do not delay care for difficult breathing, blue lips, severe weakness, confusion or a child with chest indrawing.",
+    },
+    questionsForDoctor: [
+      "Could this cough and fever be pneumonia?",
+      "Is the breathing rate or oxygen level concerning?",
+      "Are tests or X-ray needed?",
+      "What signs mean we should return urgently?",
+      "Are vaccinations up to date?",
+    ],
+    faqs: [
+      {
+        question: "Is every cough pneumonia?",
+        answer:
+          "No. Many coughs are mild infections, allergies or irritation. Pneumonia is more concerning when cough is joined by fever, fast breathing, chest pain, low oxygen or severe weakness.",
+      },
+      {
+        question: "Can pneumonia be prevented?",
+        answer:
+          "Some causes can be reduced through vaccination, smoke reduction, nutrition, hand hygiene and early care for worsening respiratory illness.",
+      },
+    ],
+    sources: [
+      { label: "Pneumonia fact sheet", publisher: "World Health Organization", year: 2022, url: "https://www.who.int/news-room/fact-sheets/detail/pneumonia" },
+      { label: "Pneumonia health topic", publisher: "World Health Organization" },
+    ],
+    reviewer: { name: "Reviewer name (placeholder)", credentials: "MBBS, FMCP", specialty: "Respiratory Medicine / Paediatrics" },
+    lastReviewed: "2026-07-08",
+    nextReview: "2027-07-08",
+  },
+
+  // ---------------------------------------------------------------------------
+  // PEPTIC ULCER DISEASE
+  {
+    slug: "peptic-ulcer-disease",
+    title: "Peptic Ulcer Disease",
+    category: "condition",
+    specialtyCentre: "digestive-health",
+    summary:
+      "A sore in the lining of the stomach or upper intestine, often linked to H. pylori infection or repeated use of certain painkillers.",
+    metaDescription:
+      "Educational guide to ulcer symptoms, warning signs, painkiller risk, testing, hospital preparation, records to keep and Nigerian context.",
+    readingTimeMinutes: 8,
+    urgency: "see-doctor",
+    overview: [
+      "Peptic ulcer disease refers to sores in the stomach or upper part of the small intestine. It can cause burning upper abdominal pain, indigestion, nausea or discomfort after meals.",
+      "Common causes include Helicobacter pylori infection and repeated use of certain painkillers such as NSAIDs.",
+      "This guide is educational and does not diagnose ulcers or prescribe medicines.",
+    ],
+    symptoms: {
+      common: [
+        "Burning or gnawing upper abdominal pain",
+        "Indigestion or bloating",
+        "Nausea",
+        "Pain related to meals",
+        "Early fullness or reduced appetite",
+      ],
+      warning: [
+        "Vomiting blood or material that looks like coffee grounds",
+        "Black, tarry stool",
+        "Severe sudden abdominal pain",
+        "Unexplained weight loss, persistent vomiting or severe weakness",
+      ],
+    },
+    causes: [
+      "H. pylori infection is a common cause.",
+      "Repeated use of NSAID painkillers such as ibuprofen, diclofenac, naproxen or aspirin can contribute.",
+      "Smoking and heavy alcohol use may worsen risk and healing.",
+    ],
+    riskFactors: [
+      "History of ulcer",
+      "Regular NSAID painkiller use",
+      "Older age",
+      "H. pylori infection",
+      "Smoking or heavy alcohol use",
+    ],
+    diagnosis: [
+      "A clinician may discuss H. pylori testing, blood tests or endoscopy depending on symptoms and risk.",
+      "Ulcer-like pain should not be assumed to be ordinary indigestion when warning signs are present.",
+      "Bring a list of all painkillers, herbal mixtures and stomach medicines already used.",
+    ],
+    treatment: {
+      lifestyle: [
+        "Avoid smoking and heavy alcohol use",
+        "Avoid unnecessary NSAID painkillers unless a clinician advises them",
+        "Notice foods or habits that worsen symptoms, but do not rely on diet alone for warning signs",
+      ],
+      medical: [
+        "Treatment depends on the cause and may involve acid-reducing medicines or antibiotics for H. pylori under professional guidance.",
+        "Do not self-combine multiple ulcer medicines without review.",
+      ],
+    },
+    prevention: [
+      "Use painkillers safely and avoid repeated NSAID use without advice",
+      "Seek proper testing if ulcer symptoms persist",
+      "Complete prescribed medicines as directed",
+      "Return for review if symptoms continue or warning signs appear",
+    ],
+    complications: [
+      "Bleeding ulcer",
+      "Perforation",
+      "Anaemia from chronic blood loss",
+      "Stomach outlet obstruction in severe cases",
+    ],
+    urgentCare: [
+      "Seek urgent care for vomiting blood, black stool, severe sudden abdominal pain, fainting or severe weakness.",
+      "Do not delay care for bleeding signs.",
+    ],
+    nigerianContext: [
+      "Many people use painkillers repeatedly for body pain, headaches or work-related aches without discussing ulcer and kidney risks.",
+      "Herbal mixtures and over-the-counter combinations can hide symptoms or interact with medicines.",
+      "Keeping a record of painkillers, ulcer medicines and test results helps clinicians identify the likely cause.",
+    ],
+    quickFacts: [
+      "Ulcers are often linked to H. pylori or repeated NSAID painkiller use",
+      "Black stool or vomiting blood is urgent",
+      "Persistent symptoms deserve proper review",
+      "Do not treat severe abdominal pain casually",
+    ],
+    whatToDoNext: {
+      mild: "If symptoms are mild but recurring, write down meal timing, pain location and medicines already used, then arrange review.",
+      worsening: "If pain is persistent, weight is dropping, vomiting continues or symptoms return after medicines, seek prompt review.",
+      higherRisk: "Older adults, pregnant people and people using blood thinners or frequent painkillers need closer attention.",
+      atClinic: "Ask whether H. pylori testing, endoscopy or safer pain control options are needed.",
+      doNotDelay: "Do not delay care for vomiting blood, black stool, fainting, severe sudden abdominal pain or severe weakness.",
+    },
+    questionsForDoctor: [
+      "Could H. pylori or painkillers be causing this?",
+      "Do I need testing before treatment?",
+      "Which painkillers should I avoid?",
+      "What warning signs mean urgent care?",
+      "Should I return after completing medicines?",
+    ],
+    faqs: [
+      {
+        question: "Is ulcer caused only by peppery food?",
+        answer:
+          "No. Food may worsen symptoms for some people, but many ulcers are linked to H. pylori infection or repeated NSAID painkiller use.",
+      },
+      {
+        question: "Is black stool serious?",
+        answer:
+          "Black, tarry stool can signal bleeding and should be treated as urgent until a clinician says otherwise.",
+      },
+    ],
+    sources: [
+      { label: "Stomach ulcer guide", publisher: "NHS", year: 2026, url: "https://www.nhs.uk/conditions/stomach-ulcer/" },
+      { label: "Stomach ulcer information", publisher: "NHS Inform", year: 2026 },
+    ],
+    reviewer: { name: "Reviewer name (placeholder)", credentials: "MBBS, FWACP", specialty: "Gastroenterology / Family Medicine" },
+    lastReviewed: "2026-07-08",
+    nextReview: "2027-07-08",
+  },
+
+  // ---------------------------------------------------------------------------
+  // CHILD FEVER
+  {
+    slug: "child-fever",
+    title: "Child Fever",
+    category: "condition",
+    specialtyCentre: "child-health",
+    summary:
+      "A practical guide for families to understand fever in children, warning signs, records to keep and when to seek urgent care.",
+    metaDescription:
+      "Educational guide to child fever, danger signs, hospital preparation, hydration, malaria testing awareness, immunization records and Nigerian family context.",
+    readingTimeMinutes: 9,
+    urgency: "see-doctor",
+    overview: [
+      "Fever in a child means the body temperature is higher than normal. Many childhood fevers are caused by infections, but the seriousness depends on the child’s age, behaviour, breathing, hydration and other symptoms.",
+      "Families should not judge a child only by the number on the thermometer. A child’s alertness, breathing, feeding, urination and rash or convulsion history matter.",
+      "This guide is for education and hospital-visit preparation. It does not diagnose the cause of fever or replace a clinician.",
+    ],
+    symptoms: {
+      common: [
+        "Hot body or measured high temperature",
+        "Reduced appetite",
+        "Crying, tiredness or irritability",
+        "Body aches or headache in older children",
+        "Vomiting, diarrhoea, cough or catarrh depending on cause",
+      ],
+      warning: [
+        "Baby under 3 months with fever",
+        "Difficulty breathing, convulsion, stiff neck or unusual drowsiness",
+        "Persistent vomiting, dehydration or not passing urine well",
+        "Rash with fever, severe weakness or fever lasting several days",
+      ],
+    },
+    causes: [
+      "Common causes include viral infections, malaria, respiratory infections, ear or throat infections, urinary infection and other childhood illnesses.",
+      "The cause cannot be confirmed by touch alone.",
+      "Local disease patterns, immunization status and recent exposure matter.",
+    ],
+    riskFactors: [
+      "Young age, especially babies",
+      "Incomplete immunization",
+      "Malaria exposure",
+      "Poor feeding or dehydration",
+      "Existing chronic illness",
+    ],
+    diagnosis: [
+      "A clinician may ask about age, duration of fever, feeding, vomiting, stool, cough, urine, rash, convulsion and medicines already given.",
+      "Tests may include malaria test, blood test, urine test or other checks depending on symptoms.",
+      "Bring the child’s immunization card, recent prescriptions and previous test results.",
+    ],
+    treatment: {
+      lifestyle: [
+        "Keep the child comfortable and encourage fluids if the child can drink.",
+        "Avoid overdressing or overheating the child.",
+        "Do not force food, but watch hydration and urine.",
+      ],
+      medical: [
+        "Fever medicines and doses depend on the child’s age and weight and should be used according to professional guidance.",
+        "Antibiotics or antimalarials should not be started blindly without proper assessment where testing is needed.",
+      ],
+    },
+    prevention: [
+      "Keep immunization records up to date",
+      "Use mosquito prevention where malaria is common",
+      "Practice hand hygiene and safe water habits",
+      "Seek early review for young babies or danger signs",
+    ],
+    complications: [
+      "Dehydration",
+      "Febrile convulsion in some children",
+      "Severe infection if the cause is serious",
+      "Delayed treatment when danger signs are missed",
+    ],
+    urgentCare: [
+      "Seek urgent care for babies under 3 months with fever, convulsion, breathing difficulty, unusual drowsiness, stiff neck, dehydration or severe weakness.",
+      "Do not wait at home when a child is difficult to wake, unable to drink or breathing badly.",
+    ],
+    nigerianContext: [
+      "In Nigeria, fever is often assumed to be malaria, but fever can come from many causes. Testing and clinical review help avoid wrong treatment.",
+      "Families may use leftover medicines from older siblings. This can be unsafe because child doses depend on age and weight.",
+      "Keeping an immunization card, weight record, fever timeline and medicine list helps hospital staff act faster.",
+    ],
+    quickFacts: [
+      "Child age matters in fever decisions",
+      "Fever is a sign, not a diagnosis",
+      "A child’s behaviour and breathing matter",
+      "Babies with fever need special caution",
+    ],
+    whatToDoNext: {
+      mild: "If the child is alert, drinking and breathing normally, monitor temperature, fluids and symptoms while arranging advice if fever persists.",
+      worsening: "If the child becomes weak, vomits repeatedly, refuses fluids or develops new symptoms, seek prompt review.",
+      higherRisk: "Babies, children with chronic illness, malnutrition or incomplete immunization need earlier care.",
+      atClinic: "Tell the clinician the child’s age, weight, fever duration, medicines used, malaria test history and immunization status.",
+      doNotDelay: "Do not delay care for convulsion, breathing difficulty, unusual drowsiness, stiff neck, dehydration or a baby under 3 months with fever.",
+    },
+    questionsForDoctor: [
+      "What is the likely cause of the fever?",
+      "Does my child need a malaria test, urine test or blood test?",
+      "What dose is correct for this child’s age and weight?",
+      "What warning signs mean we should return immediately?",
+      "Are the immunizations up to date?",
+    ],
+    faqs: [
+      {
+        question: "Is every child fever malaria?",
+        answer:
+          "No. Malaria is common in many places, but fever can also come from viral infections, pneumonia, urinary infection, ear infection and other causes.",
+      },
+      {
+        question: "Should I use adult medicine in smaller quantity?",
+        answer:
+          "No. Children need age- and weight-appropriate medicines. Ask a qualified professional.",
+      },
+    ],
+    sources: [
+      { label: "High temperature in children", publisher: "NHS", year: 2026, url: "https://www.nhs.uk/symptoms/fever-in-children/" },
+      { label: "Fever in children guidance", publisher: "NHS Inform", year: 2026 },
+    ],
+    reviewer: { name: "Reviewer name (placeholder)", credentials: "MBBS, FMCPaed", specialty: "Paediatrics / Family Medicine" },
+    lastReviewed: "2026-07-08",
+    nextReview: "2027-07-08",
+  },
+
+  // ---------------------------------------------------------------------------
+  // MENTAL HEALTH DISTRESS
+  {
+    slug: "mental-health-distress",
+    title: "Mental Health Distress Awareness",
+    category: "condition",
+    specialtyCentre: "mental-health",
+    summary:
+      "A plain-language guide to recognizing emotional or psychological distress, preparing for professional support and reducing stigma.",
+    metaDescription:
+      "Educational guide to mental health distress, warning signs, support preparation, questions to ask professionals, records to keep and Nigerian community context.",
+    readingTimeMinutes: 9,
+    urgency: "see-doctor",
+    overview: [
+      "Mental health distress can affect mood, sleep, concentration, energy, relationships, work, school, faith life and daily functioning.",
+      "Distress is not a personal failure. It may be linked to stress, grief, trauma, depression, anxiety, substance use, medical illness or difficult life circumstances.",
+      "This guide is for education and support preparation. It does not diagnose a mental disorder or replace care from a qualified mental health professional.",
+    ],
+    symptoms: {
+      common: [
+        "Persistent sadness, fear, worry or irritability",
+        "Loss of interest in usual activities",
+        "Sleep problems or sleeping too much",
+        "Poor concentration",
+        "Withdrawal from family, school, work or faith/community life",
+        "Physical complaints that worsen with stress",
+      ],
+      warning: [
+        "Confusion, extreme agitation or loss of touch with reality",
+        "Not eating, not sleeping or not functioning for days",
+        "Risky behaviour, violence risk or severe substance use",
+        "Any concern that the person may harm themselves or someone else",
+      ],
+    },
+    causes: [
+      "Mental distress can come from many overlapping factors: stress, grief, trauma, family pressure, illness, financial strain, substance use or biological vulnerability.",
+      "Some medical conditions and medicines can affect mood, sleep and thinking.",
+      "Professional assessment helps separate temporary stress from conditions needing structured care.",
+    ],
+    riskFactors: [
+      "Recent bereavement, trauma or major life stress",
+      "Family history of mental health conditions",
+      "Substance use",
+      "Chronic illness or pain",
+      "Isolation, bullying, abuse or severe pressure",
+    ],
+    diagnosis: [
+      "A qualified professional may ask about mood, sleep, appetite, thoughts, behaviour, stressors, medical history and safety.",
+      "Assessment may involve a doctor, psychologist, psychiatrist, counsellor or trained mental health worker depending on the setting.",
+      "Mental health symptoms should not be dismissed as weakness or spiritual failure.",
+    ],
+    treatment: {
+      lifestyle: [
+        "Supportive routines, sleep, safe relationships, reduced isolation and reduced harmful substance use can help, but may not be enough alone.",
+        "Trusted family, faith or community support can be useful when it is safe and non-judgmental.",
+      ],
+      medical: [
+        "Professional support may include counselling, psychological therapy, social support, medical review or medication when appropriate.",
+        "The right plan depends on assessment and should not be self-prescribed.",
+      ],
+    },
+    prevention: [
+      "Seek help early when distress is affecting daily life",
+      "Build safe support systems",
+      "Reduce stigma by using respectful language",
+      "Keep follow-up appointments when care has started",
+    ],
+    complications: [
+      "School, work or relationship breakdown",
+      "Substance misuse",
+      "Worsening physical health",
+      "Safety risks if severe distress is ignored",
+    ],
+    urgentCare: [
+      "Seek urgent professional help if someone is confused, severely agitated, unsafe, unable to function, or at risk of harming themselves or another person.",
+      "Do not leave a person alone when there is an immediate safety concern. In an emergency, go to the nearest hospital or contact local emergency support.",
+    ],
+    nigerianContext: [
+      "In Nigeria, stigma often delays mental health care. Families may hide distress until it becomes severe.",
+      "Faith and family support can be protective, but they should not replace professional help when symptoms are serious or safety is at risk.",
+      "Keeping a simple timeline of symptoms, stressors, sleep changes, substances used and previous care helps professionals understand the situation.",
+    ],
+    quickFacts: [
+      "Mental distress is real and deserves care",
+      "Support can include counselling, medical review and community support",
+      "Stigma delays help",
+      "Safety concerns require urgent attention",
+    ],
+    whatToDoNext: {
+      mild: "If distress is mild but persistent, write down what has changed, how long it has lasted and what support has helped or worsened it.",
+      worsening: "If sleep, work, school, relationships or daily function are worsening, arrange professional support promptly.",
+      higherRisk: "People with trauma, substance use, chronic illness, severe isolation or previous crisis need closer support.",
+      atClinic: "Ask what kind of support is appropriate, whether medical causes should be checked, and what warning signs require urgent help.",
+      doNotDelay: "Do not delay help where there is confusion, severe agitation, inability to function, violence risk or concern about self-harm or harm to others.",
+    },
+    questionsForDoctor: [
+      "Could stress, depression, anxiety, grief, trauma or a medical problem be contributing?",
+      "What kind of professional support is appropriate?",
+      "Are there medicines, substances or illnesses that could be affecting mood or sleep?",
+      "What should family members do if symptoms worsen?",
+      "What signs mean urgent help is needed?",
+    ],
+    faqs: [
+      {
+        question: "Is mental distress a sign of weakness?",
+        answer:
+          "No. Mental distress can affect anyone and may involve biological, psychological, social and spiritual pressures. Support and treatment can help.",
+      },
+      {
+        question: "Should families hide mental health problems?",
+        answer:
+          "No. Shame often delays care. Safe, respectful support and professional help are better than silence.",
+      },
+    ],
+    sources: [
+      { label: "Mental disorders fact sheet", publisher: "World Health Organization", year: 2025, url: "https://www.who.int/news-room/fact-sheets/detail/mental-disorders" },
+      { label: "Mental health: strengthening our response", publisher: "World Health Organization", year: 2025 },
+    ],
+    reviewer: { name: "Reviewer name (placeholder)", credentials: "MBBS, FWACPsych", specialty: "Psychiatry / Mental Health" },
+    lastReviewed: "2026-07-08",
+    nextReview: "2027-07-08",
+  },
 ];
 
 // ────────────────────────────────────────────────────────────── query helpers
