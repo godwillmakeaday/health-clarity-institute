@@ -1,70 +1,108 @@
-# Health Clarity Institute — Authority-First Healthcare Platform
+# Health Clarity Institute Nigeria
 
-A premium, static Next.js website positioning Health Clarity Institute as a public health clarity, patient-navigation education, medical-record awareness, healthcare-literacy, and future institution platform for Nigeria and Africa.
+A premium institutional health-knowledge and patient-navigation platform for
+Nigerian patients, families and institutions. Built with **Next.js 14 (App
+Router)**, **TypeScript** and **Tailwind CSS**.
 
-## Strategic Positioning
+The platform provides reviewed, plain-language medical guides with a recurring
+**Nigerian context** layer (cost, access, late diagnosis, self-medication and
+when to seek urgent care), organised into specialist centres and a searchable
+health library designed to scale to thousands of entries. It also includes a
+public **Medical Law & Patient Rights Clarity** layer for consent, records,
+dignity, billing, confidentiality and hospital-dispute awareness.
 
-Health Clarity Institute is not a hospital, clinic, telemedicine provider, doctor-booking platform, emergency service, or treatment centre. It is an education-first authority platform building the knowledge, trust, records-awareness, and patient-navigation foundation from which future licensed healthcare layers may grow.
+---
 
-Core doctrine:
-
-> Build authority first. Build the institution later.
-
-## Included Routes
-
-- `/` — Home
-- `/about` — About
-- `/health-guides` — Health Guides / Knowledge Hubs
-- `/hospital-navigation` — Hospital Navigation Desk
-- `/medical-records-awareness` — Medical Records Awareness
-- `/patient-rights` — Patient Rights and Medical Law Awareness
-- `/nhia-guide` — Health Insurance and NHIA Guide
-- `/authority-first-healthcare-model` — Authority-First Healthcare Model
-- `/future-institution-roadmap` — Future Institution Roadmap
-- `/editorial-policy` — Editorial Policy
-- `/medical-disclaimer` — Medical Disclaimer
-- `/privacy-policy` — Privacy Policy
-- `/source-policy` — Source Policy
-- `/correction-policy` — Correction Policy
-- `/professional-collaboration-policy` — Professional Collaboration Policy
-- `/contact` — Contact / Partnership
-- `/clarity-institution-model` — Legacy doctrine route pointing to the new model
-- `/for-partners` — Legacy partner route pointing to Contact / Partnership
-
-## Deployment Through GitHub and Vercel
+## Getting started
 
 ```bash
+# 1. Install dependencies
 npm install
+
+# 2. Run the development server
+npm run dev
+# → http://localhost:3000
+
+# 3. Build for production
 npm run build
+npm run start
 ```
 
-The build script uses Webpack:
+Requires Node.js 18.17+ (Next.js 14).
 
-```json
-"build": "next build --webpack"
+---
+
+## Project structure
+
+```
+app/                         App Router pages
+  layout.tsx                 Root layout: fonts, header, footer, SEO base
+  page.tsx                   Homepage (9 sections)
+  globals.css                Tailwind layers + component classes
+  conditions/
+    page.tsx                 Conditions A–Z index
+    [slug]/page.tsx          Dynamic condition guide template (SSG)
+  health-library/page.tsx    Library hub + search
+  symptoms/page.tsx          Symptoms A–Z
+  tests-procedures/page.tsx  Tests & Procedures A–Z
+  medicines/page.tsx         Medicines & Treatment A–Z
+  prevention/page.tsx        Prevention Guides A–Z
+  specialist-centres/page.tsx
+  nigerian-health-context/page.tsx
+  medical-law-patient-rights/page.tsx
+  for-hospitals-institutions/page.tsx     Institutional services
+  about/page.tsx
+  editorial-policy/page.tsx
+  medical-review-policy/page.tsx
+  contact/page.tsx
+  not-found.tsx              Custom 404
+
+components/                  Reusable UI (Header, Footer, SearchBar, callouts,
+                             cards, icons, PageHero, AZIndex)
+
+lib/
+  types.ts                   HealthArticle data model (the core record shape)
+  conditions.ts              6 fully-authored condition guides + helpers
+  site.ts                    Site metadata, nav, centres, library indexes
+  search.ts                  Flat search index + scoring
 ```
 
-This is intentional because Turbopack may fail on Android/Termux.
+---
 
-Then push to GitHub:
+## The data model
 
-```bash
-git init
-git add .
-git commit -m "Upgrade Health Clarity Institute authority platform"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/health-clarity-institute.git
-git push -u origin main
-```
+Every clinical page is one `HealthArticle` record (see `lib/types.ts`). Adding a
+new guide means adding **data**, not new code — the dynamic template at
+`app/conditions/[slug]/page.tsx` renders any well-formed record and is
+pre-generated at build time via `generateStaticParams`.
 
-Then import the GitHub repository in Vercel.
+Six guides are authored in full: **hypertension, diabetes, malaria, stroke,
+kidney disease, pregnancy danger signs**. The Symptoms / Tests / Medicines /
+Prevention sections currently use lightweight placeholder indexes in `lib/site.ts`
+that can later be promoted to full `HealthArticle` records.
 
-## Before Launch
+---
 
-Replace the placeholder email address:
+## Important notes
 
-```txt
-hello@healthclarityinstitute.org
-```
+- **Educational only.** All content is for education and is not a substitute for
+  professional medical diagnosis or treatment. Emergency guidance is surfaced
+  prominently where relevant.
+- **Reviewer & review dates are placeholders** pending real clinical sign-off,
+  as stated on each guide and in the Medical Review Policy.
+- **Design system:** Serif headings, clean sans body text and mono clinical
+  metadata, on a navy / medical-blue / clinical-green palette over warm
+  off-white. Font fallbacks are defined locally so production builds do not
+  depend on fetching Google Fonts at build time. Tokens live in
+  `tailwind.config.ts`.
 
-Review source links, policies, and medical disclaimer language before public launch.
+---
+
+## Customising
+
+- **Brand / contact:** edit the `site` object in `lib/site.ts`.
+- **Navigation & centres:** `primaryNav`, `specialistCentres`, `coreNavCards` in
+  `lib/site.ts`.
+- **Add a condition:** append a `HealthArticle` to `conditions` in
+  `lib/conditions.ts`. It will appear in search, the A–Z, its specialist centre,
+  and get its own statically-generated page automatically.
