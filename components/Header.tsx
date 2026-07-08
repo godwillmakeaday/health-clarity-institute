@@ -66,9 +66,7 @@ export function Header() {
               For Institutions
             </Link>
           
-            <a href="/access-infrastructure-desk" className="text-sm font-medium text-slate-700 transition hover:text-sky-700">
-              Access Infrastructure
-            </a>
+       
 
           </nav>
 
@@ -76,8 +74,7 @@ export function Header() {
             type="button"
             className="inline-flex items-center justify-center rounded border border-line p-2 text-navy lg:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open            onClick={() => setOpen((v) => !v)}
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
               {open ? <path d="M6 6l12 12M18 6 6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}

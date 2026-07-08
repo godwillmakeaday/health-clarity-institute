@@ -23,6 +23,7 @@ export const primaryNav: { label: string; href: string }[] = [
   { label: "Specialist Centres", href: "/centres" },
   { label: "Patient Rights", href: "/medical-law-patient-rights" },
   { label: "Nigerian Context", href: "/nigerian-health-context" },
+{ label: "Access Infrastructure", href: "/access-infrastructure-desk" },
 ];
 
 // Section 3 — core navigation cards
