@@ -1,420 +1,101 @@
-import * as React from "react";
 import Link from "next/link";
-import type { Metadata } from "next";
-import { Container, Eyebrow, SectionHeading, LinkCard, Card, UrgencyPill } from "@/components/ui";
-import { SearchBar } from "@/components/SearchBar";
-import {
-  PulseIcon,
-  BookIcon,
-  ClipboardIcon,
-  PillIcon,
-  ShieldIcon,
-  AlertIcon,
-  MapPinIcon,
-  StethoscopeIcon,
-  ArrowRightIcon,
-  CheckIcon,
-  HospitalIcon,
-  iconBySlug,
-} from "@/components/icons";
-import {
-  coreNavCards,
-  specialistCentres,
-  patientNavigation,
-  institutionalServices,
-  trustPoints,
-  featuredGuideSlugs,
-  whatWeDo,
-  builtForRealities,
-} from "@/lib/site";
-import { getConditionBySlug } from "@/lib/conditions";
-
-export const metadata: Metadata = {
-  title: "Clear Medical Knowledge for Nigerian Patients and Institutions",
-  description:
-    "Evidence-informed health guides, patient navigation, specialist insight and Nigerian-context medical education from Health Clarity Institute Nigeria.",
-};
-
-const navCardIcons = [BookIcon, PulseIcon, ClipboardIcon, PillIcon, ShieldIcon, AlertIcon, MapPinIcon, ShieldIcon, StethoscopeIcon];
-
-const whatWeDoIcons: Record<string, (p: { size?: number; className?: string }) => React.JSX.Element> = {
-  book: BookIcon,
-  pulse: PulseIcon,
-  map: MapPinIcon,
-  stethoscope: StethoscopeIcon,
-  hospital: HospitalIcon,
-  shield: ShieldIcon,
-};
+import { AuthorityDoctrineSection } from "@/components/AuthorityDoctrineSection";
+import { DisclaimerPanel } from "@/components/DisclaimerPanel";
+import { FutureInstitutionCTA } from "@/components/FutureInstitutionCTA";
+import { KnowledgeHubCard } from "@/components/KnowledgeHubCard";
+import { ProblemCard } from "@/components/ProblemCard";
+import { SectionHeader } from "@/components/SectionHeader";
+import { healthcareInstitutions, knowledgeHubs, pillars, problemCards } from "@/lib/site";
 
 export default function HomePage() {
-  const featured = featuredGuideSlugs
-    .map((s) => getConditionBySlug(s))
-    .filter((c): c is NonNullable<typeof c> => Boolean(c));
+  const featuredHubs = knowledgeHubs.slice(0, 6);
 
   return (
     <>
-      {/* ─────────────────────────────── 1 + 2. Hero with search */}
-      <section className="relative overflow-hidden border-b border-line">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-offwhite to-white" aria-hidden="true" />
-        <Container className="py-16 md:py-24">
-          <div className="max-w-3xl">
-            <Eyebrow>Nigerian health education · patient clarity · specialist intelligence</Eyebrow>
-            <h1 className="mt-5 text-display">
-              Clear medical knowledge for Nigerian patients and institutions.
-            </h1>
-            <p className="mt-6 max-w-2xl text-[1.2rem] leading-relaxed text-slate">
-              Evidence-informed health guides, patient navigation, specialist insight, and
-              Nigerian-context medical education — written to help you understand, not to replace
-              your clinician.
-            </p>
+      <section className="hero home-hero">
+        <div className="hero-content narrow">
+          <p className="eyebrow">Public health clarity · Patient navigation education · Nigeria and Africa</p>
+          <h1>Health Clarity Institute</h1>
+          <p className="hero-text">
+            Building the public knowledge and trust foundation for better healthcare access in Nigeria and Africa.
+          </p>
+          <p className="hero-support">
+            Health Clarity Institute helps patients, families, schools, churches, employers, and communities understand health conditions, hospital processes, medical records, referrals, preventive care, and care pathways before confusion becomes delay.
+          </p>
+          <div className="button-row">
+            <Link className="button primary" href="/health-guides">Explore Health Guides</Link>
+            <Link className="button secondary" href="/hospital-navigation">Prepare for a Hospital Visit</Link>
+            <Link className="button secondary" href="/medical-records-awareness">Understand Medical Records</Link>
+            <Link className="button quiet" href="/future-institution-roadmap">View Future Roadmap</Link>
           </div>
-
-          <div className="mt-9 max-w-2xl">
-            <SearchBar size="lg" />
-            <p className="mt-3 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-slate-soft">
-              Try: hypertension · malaria · chest pain · blood sugar test
-            </p>
+          <div className="hero-disclaimer">
+            <DisclaimerPanel compact />
           </div>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/health-library"
-              className="inline-flex items-center gap-2 rounded border border-navy bg-navy px-5 py-3 text-sm font-medium text-white no-underline transition-colors hover:bg-navy-700 hover:text-white"
-            >
-              Search Health Library
-            </Link>
-            <Link
-              href="/conditions"
-              className="inline-flex items-center gap-2 rounded border border-line bg-white px-5 py-3 text-sm font-medium text-navy no-underline transition-colors hover:border-clinical-blue"
-            >
-              Explore Conditions
-            </Link>
-            <Link
-              href="/for-hospitals-institutions"
-              className="inline-flex items-center gap-2 rounded border border-line bg-white px-5 py-3 text-sm font-medium text-navy no-underline transition-colors hover:border-clinical-blue"
-            >
-              For Hospitals & Institutions
-            </Link>
-          </div>
-        </Container>
+        </div>
       </section>
 
-      {/* ─────────────────────────── What Health Clarity Institute Nigeria Does */}
-      <section className="border-b border-line py-14 md:py-20">
-        <Container>
-          <SectionHeading
-            eyebrow="The institution"
-            title="What Health Clarity Institute Nigeria does"
-            intro="More than a library — a health institution built to educate patients, guide decisions, and support the organisations that deliver care."
-          />
-          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {whatWeDo.map((item) => {
-              const Icon = whatWeDoIcons[item.iconSlug] ?? BookIcon;
-              return (
-                <Card key={item.title} className="p-6">
-                  <span className="flex h-11 w-11 items-center justify-center rounded border border-clinical-blue/20 bg-clinical-blueSoft text-clinical-blueDark">
-                    <Icon size={22} />
-                  </span>
-                  <h3 className="mt-4 font-serif text-lg text-navy">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate">{item.description}</p>
-                </Card>
-              );
-            })}
-          </div>
-        </Container>
+      <AuthorityDoctrineSection />
+
+      <section className="section soft-section">
+        <SectionHeader
+          eyebrow="The real access problem"
+          title="The health problem is not only access. It is confusion."
+          text="A family may live near a hospital and still delay care because they do not know what is urgent, what records matter, what questions to ask, or how referrals and payment options work."
+        />
+        <div className="card-grid four">
+          {problemCards.map((problem, index) => (
+            <ProblemCard key={problem} text={problem} index={index} />
+          ))}
+        </div>
       </section>
 
-      {/* ─────────────────────────────── 3. Core navigation cards */}
-      <section className="py-14 md:py-20">
-        <Container>
-          <SectionHeading
-            eyebrow="Where to begin"
-            title="Find your way through the library"
-            intro="Eight clear doors into Nigerian-context medical knowledge — from conditions and symptoms to tests, treatment and prevention."
-          />
-          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {coreNavCards.map((card, i) => {
-              const Icon = navCardIcons[i] ?? BookIcon;
-              return (
-                <LinkCard key={card.href} href={card.href} className="p-6">
-                  <span className="flex h-11 w-11 items-center justify-center rounded border border-clinical-blue/20 bg-clinical-blueSoft text-clinical-blueDark">
-                    <Icon size={22} />
-                  </span>
-                  <h3 className="mt-4 font-serif text-lg text-navy group-hover:text-clinical-blue">
-                    {card.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate">{card.description}</p>
-                </LinkCard>
-              );
-            })}
-          </div>
-        </Container>
+      <section className="section">
+        <SectionHeader
+          eyebrow="What Health Clarity does"
+          title="Clarity before care. Preparation before panic. Records before loss."
+          text="Health Clarity Institute is an education-first public authority platform. Its present work is to improve understanding, preparedness, and record-awareness, not to diagnose or treat."
+        />
+        <div className="card-grid three">
+          {pillars.map((pillar) => (
+            <article className="card pillar-card" key={pillar.title}>
+              <span className="card-number">{pillar.letter}</span>
+              <h3>{pillar.title}</h3>
+              <p>{pillar.text}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
-      {/* ─────────────────────────────── 4. Featured specialist centres */}
-      <section className="border-y border-line bg-offwhite py-14 md:py-20">
-        <Container>
-          <SectionHeading
-            eyebrow="Specialist Centres"
-            title="Knowledge organised by area of care"
-            intro="Curated centres bring together guides, symptoms and prevention for each major area of health."
-          />
-          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {specialistCentres.map((centre) => {
-              const Icon = iconBySlug[centre.slug] ?? HospitalIcon;
-              return (
-                <LinkCard key={centre.slug} href={`/specialist-centres#${centre.slug}`} className="p-6">
-                  <div className="flex items-start justify-between">
-                    <span className="flex h-11 w-11 items-center justify-center rounded border border-clinical-green/25 bg-clinical-greenSoft text-clinical-green">
-                      <Icon size={22} />
-                    </span>
-                    <span className="font-mono text-[0.62rem] uppercase tracking-[0.12em] text-slate-soft">
-                      {centre.focus}
-                    </span>
-                  </div>
-                  <h3 className="mt-4 font-serif text-lg text-navy group-hover:text-clinical-blue">
-                    {centre.name}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate">{centre.description}</p>
-                </LinkCard>
-              );
-            })}
-          </div>
-        </Container>
+      <section className="section soft-section">
+        <SectionHeader
+          eyebrow="Knowledge hubs"
+          title="Health Clarity Knowledge Hubs"
+          text="Each hub is designed to help users understand what to ask, what to keep, and when online content must stop and professional care must begin."
+        />
+        <div className="hub-grid">
+          {featuredHubs.map((hub) => (
+            <KnowledgeHubCard key={hub.title} {...hub} />
+          ))}
+        </div>
+        <div className="center-action">
+          <Link className="button primary" href="/health-guides">View All Knowledge Hubs</Link>
+        </div>
       </section>
 
-      {/* ─────────────────────────────── 5. Built for Nigerian Realities */}
-      <section className="py-14 md:py-24">
-        <Container>
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-clinical-green/25 bg-clinical-greenSoft px-3 py-1">
-              <MapPinIcon size={15} className="text-clinical-green" />
-              <span className="font-mono text-[0.66rem] font-medium uppercase tracking-[0.14em] text-clinical-green">
-                Built for Nigerian realities
-              </span>
-            </div>
-            <h2 className="mt-5 text-h2">
-              Correct information is not enough — it has to work where people actually live.
-            </h2>
-            <p className="mt-5 text-[1.05rem] leading-relaxed text-slate">
-              Global medical facts matter, but how care reaches people in Nigeria is different.
-              Every major guide is written with these realities in mind, so the information is
-              not only accurate, but usable.
-            </p>
-          </div>
-
-          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {builtForRealities.map((item) => (
-              <Card key={item.title} className="p-6">
-                <div className="flex items-center gap-2.5">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-clinical-greenSoft text-clinical-green">
-                    <CheckIcon size={14} strokeWidth={2} />
-                  </span>
-                  <h3 className="font-serif text-base text-navy">{item.title}</h3>
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-slate">{item.body}</p>
-              </Card>
-            ))}
-          </div>
-
-          <Link
-            href="/nigerian-health-context"
-            className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-clinical-blueDark no-underline hover:text-clinical-blue"
-          >
-            Read more about the Nigerian context layer
-            <ArrowRightIcon size={16} />
-          </Link>
-        </Container>
+      <section className="section inspiration-section">
+        <SectionHeader
+          eyebrow="Institutional inspiration"
+          title="Learning From Great Healthcare Institutions"
+          text="Health Clarity does not copy, rank, or claim affiliation with these institutions. They are referenced only as examples of a principle: serious healthcare authority grows through knowledge, systems, research, professional culture, records, patient experience, and public trust."
+        />
+        <div className="institution-strip">
+          {healthcareInstitutions.map((name) => (
+            <span key={name}>{name}</span>
+          ))}
+        </div>
       </section>
 
-      {/* ─────────────────────────────── 6. Featured guides */}
-      <section className="border-y border-line bg-offwhite py-14 md:py-20">
-        <Container>
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <SectionHeading
-              eyebrow="Featured Guides"
-              title="Start with the most needed guides"
-              intro="Reviewed, plain-language guides to the conditions Nigerian families face most."
-            />
-            <Link
-              href="/conditions"
-              className="inline-flex items-center gap-2 text-sm font-medium text-clinical-blueDark no-underline hover:text-clinical-blue"
-            >
-              All conditions A–Z
-              <ArrowRightIcon size={16} />
-            </Link>
-          </div>
-          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((c) => (
-              <LinkCard key={c.slug} href={`/conditions/${c.slug}`} className="flex flex-col p-6">
-                <div className="flex items-center justify-between">
-                  <UrgencyPill level={c.urgency} />
-                  <span className="font-mono text-[0.62rem] uppercase tracking-wide text-slate-soft">
-                    {c.readingTimeMinutes} min
-                  </span>
-                </div>
-                <h3 className="mt-4 font-serif text-xl text-navy group-hover:text-clinical-blue">
-                  {c.title}
-                </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-slate">{c.summary}</p>
-                <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-clinical-blueDark">
-                  Read the guide
-                  <ArrowRightIcon size={16} className="transition-transform group-hover:translate-x-0.5" />
-                </span>
-              </LinkCard>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* ─────────────────────────────── 7. Start Here */}
-      <section className="py-14 md:py-20">
-        <Container>
-          <SectionHeading
-            eyebrow="Start here"
-            title="Start from where you are"
-            intro="Different needs call for different starting points. Choose what is true for you right now."
-          />
-          <div className="mt-9 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {patientNavigation.map((item, i) => (
-              <LinkCard key={item.href} href={item.href} className="flex items-start gap-4 p-6">
-                <span className="font-mono text-sm font-medium text-clinical-blueDark">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span>
-                  <h3 className="font-serif text-lg text-navy group-hover:text-clinical-blue">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-slate">{item.description}</p>
-                </span>
-              </LinkCard>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* ─────────────────────────────── 8. Institutional services */}
-      <section className="bg-navy py-14 text-white md:py-24">
-        <Container>
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
-            <div>
-              <p className="font-mono text-[0.72rem] font-medium uppercase tracking-[0.18em] text-clinical-blueSoft">
-                For institutions
-              </p>
-              <h2 className="mt-4 font-serif text-h2 text-white">
-                Health infrastructure for hospitals, clinics and organisations.
-              </h2>
-              <p className="mt-5 text-[1.05rem] leading-relaxed text-white/75">
-                We build the digital and editorial backbone serious health institutions need — for
-                hospitals, clinics, NGOs, schools, companies and professionals.
-              </p>
-              <Link
-                href="/for-hospitals-institutions"
-                className="mt-7 inline-flex items-center gap-2 rounded border border-white/30 bg-white px-5 py-3 text-sm font-medium text-navy no-underline transition-colors hover:bg-white/90 hover:text-navy"
-              >
-                Explore institutional services
-                <ArrowRightIcon size={16} />
-              </Link>
-            </div>
-            <div className="grid gap-px overflow-hidden rounded-lg border border-white/15 bg-white/15 sm:grid-cols-2">
-              {institutionalServices.map((svc) => (
-                <div key={svc.title} className="bg-navy p-5">
-                  <h3 className="font-serif text-base text-white">{svc.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-white/65">{svc.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* ─────────────────────────── Medical Review & Editorial Policy preview */}
-      <section className="border-t border-line py-14 md:py-20">
-        <Container>
-          <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-14">
-            <div>
-              <Eyebrow>Trust &amp; governance</Eyebrow>
-              <h2 className="mt-4 text-h2">Medical review &amp; editorial policy</h2>
-              <p className="mt-5 text-[1.05rem] leading-relaxed text-slate">
-                Our content is written for education, intended to be reviewed by qualified
-                health professionals, linked to its sources, and updated periodically. We are
-                open about how we work — and honest that nothing here replaces a clinician.
-              </p>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <Link
-                  href="/medical-review-policy"
-                  className="inline-flex items-center gap-2 rounded border border-navy bg-navy px-5 py-3 text-sm font-medium text-white no-underline transition-colors hover:bg-navy-700 hover:text-white"
-                >
-                  Medical Review Policy
-                  <ArrowRightIcon size={16} />
-                </Link>
-                <Link
-                  href="/editorial-policy"
-                  className="inline-flex items-center gap-2 rounded border border-line bg-white px-5 py-3 text-sm font-medium text-navy no-underline transition-colors hover:border-clinical-blue"
-                >
-                  Editorial Policy
-                </Link>
-              </div>
-            </div>
-
-            <Card className="p-6 md:p-7">
-              <ul className="space-y-4">
-                {[
-                  { h: "Written for education", d: "Plain-language guides to help you understand — not to diagnose or prescribe." },
-                  { h: "Intended for professional review", d: "Clinical content is prepared for sign-off by qualified reviewers." },
-                  { h: "Source-linked", d: "Each guide lists the references it is based on." },
-                  { h: "Periodically updated", d: "Every guide shows when it was last reviewed and when it is next due." },
-                ].map((row) => (
-                  <li key={row.h} className="flex gap-3">
-                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-clinical-greenSoft text-clinical-green">
-                      <CheckIcon size={14} strokeWidth={2} />
-                    </span>
-                    <span>
-                      <span className="block text-sm font-medium text-navy">{row.h}</span>
-                      <span className="block text-sm leading-relaxed text-slate">{row.d}</span>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-          </div>
-        </Container>
-      </section>
-
-      {/* ─────────────────────────────── 9. Trust system */}
-      <section className="py-14 md:py-20">
-        <Container>
-          <SectionHeading
-            eyebrow="Why you can trust this"
-            title="A clear standard behind every guide"
-            intro="We hold our content to an institutional standard — transparent, reviewed and honest about its limits."
-          />
-          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {trustPoints.map((t) => (
-              <Card key={t.label} className="p-6">
-                <div className="flex items-center gap-2.5">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-clinical-greenSoft text-clinical-green">
-                    <CheckIcon size={15} strokeWidth={2} />
-                  </span>
-                  <h3 className="font-serif text-base text-navy">{t.label}</h3>
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-slate">{t.detail}</p>
-              </Card>
-            ))}
-          </div>
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
-            <Link href="/editorial-policy" className="text-sm font-medium text-clinical-blueDark no-underline hover:text-clinical-blue">
-              Editorial Policy
-            </Link>
-            <Link href="/medical-review-policy" className="text-sm font-medium text-clinical-blueDark no-underline hover:text-clinical-blue">
-              Medical Review Policy
-            </Link>
-            <Link href="/about" className="text-sm font-medium text-clinical-blueDark no-underline hover:text-clinical-blue">
-              About the Institute
-            </Link>
-          </div>
-        </Container>
-      </section>
+      <FutureInstitutionCTA />
     </>
   );
 }

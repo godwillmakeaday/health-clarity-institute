@@ -1,201 +1,284 @@
-// lib/site.ts
-// Site-wide structured data and lightweight library indexes.
-
-import type { NavCard, SpecialistCentre } from "./types";
-
 export const site = {
-  name: "Health Clarity Institute Nigeria",
-  shortName: "Health Clarity Institute",
-  initials: "HCI",
-  tagline: "Clear medical knowledge for Nigerian patients and institutions.",
+  name: "Health Clarity Institute",
+  shortName: "Health Clarity",
   description:
-    "A Nigerian health education, patient clarity and specialist-care intelligence platform. Evidence-informed guides, patient navigation and Nigerian-context medical education.",
-  url: "https://healthclarity.ng",
-  email: "hello@healthclarity.ng",
-  emergencyNote:
-    "In an emergency, go to the nearest hospital immediately. This platform is for education and does not replace urgent medical care.",
+    "A public health clarity, patient-navigation education, medical-record awareness, healthcare-literacy, and future healthcare institution platform for Nigeria and Africa.",
+  url: "https://health-clarity-institute.vercel.app"
 };
 
-export const primaryNav: { label: string; href: string }[] = [
-  { label: "Health Library", href: "/health-library" },
-  { label: "Conditions A–Z", href: "/conditions" },
-  { label: "Symptoms A–Z", href: "/symptoms" },
-  { label: "Specialist Centres", href: "/centres" },
-  { label: "Patient Rights", href: "/medical-law-patient-rights" },
-  { label: "Nigerian Context", href: "/nigerian-health-context" },
+export const primaryNav = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/health-guides", label: "Health Guides" },
+  { href: "/hospital-navigation", label: "Hospital Navigation" },
+  { href: "/medical-records-awareness", label: "Records" },
+  { href: "/authority-first-healthcare-model", label: "Authority Model" },
+  { href: "/future-institution-roadmap", label: "Roadmap" },
+  { href: "/contact", label: "Contact" }
 ];
 
-// Section 3 — core navigation cards
-export const coreNavCards: NavCard[] = [
-  { title: "Conditions A–Z", description: "Plain-language guides to diseases and long-term conditions.", href: "/conditions" },
-  { title: "Symptoms A–Z", description: "Understand what a symptom may mean and when to act.", href: "/symptoms" },
-  { title: "Tests & Procedures", description: "What common tests check, how they are done and what results mean.", href: "/tests-procedures" },
-  { title: "Medicines & Treatment Guides", description: "How treatments work, used safely and as prescribed.", href: "/medicines" },
-  { title: "Prevention Guides", description: "Screening, vaccines and habits that lower your risk.", href: "/prevention" },
-  { title: "Emergency Warning Signs", description: "Signs that mean you should seek urgent care now.", href: "/conditions/stroke" },
-  { title: "Nigerian Health Context", description: "Cost, access, late diagnosis and decisions families face.", href: "/nigerian-health-context" },
-  { title: "Medical Law & Patient Rights", description: "Consent, records, dignity, billing and hospital-dispute clarity.", href: "/medical-law-patient-rights" },
-  { title: "Specialist Centres", description: "Curated knowledge organised by area of care.", href: "/specialist-centres" },
+export const policyNav = [
+  { href: "/editorial-policy", label: "Editorial Policy" },
+  { href: "/medical-disclaimer", label: "Medical Disclaimer" },
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/source-policy", label: "Source Policy" },
+  { href: "/correction-policy", label: "Correction Policy" },
+  { href: "/professional-collaboration-policy", label: "Professional Collaboration" }
 ];
 
-// Section 4 / 5 — specialist centres
-export const specialistCentres: SpecialistCentre[] = [
+export const problemCards = [
+  "Patients do not always know when symptoms are urgent.",
+  "Families delay because they do not know where to go.",
+  "Medical records are lost, scattered, or poorly preserved.",
+  "People often do not know what questions to ask doctors.",
+  "Referrals are confusing.",
+  "Hospital visits can be stressful and disorganized.",
+  "Preventive care is poorly understood.",
+  "Health insurance and payment options are difficult to navigate."
+];
+
+export const pillars = [
   {
-    slug: "heart-blood-pressure",
-    name: "Heart & Blood Pressure Centre",
-    focus: "Cardiovascular health",
-    description: "Blood pressure, heart disease and stroke prevention and care.",
-    conditionSlugs: ["hypertension", "stroke"],
+    title: "Health Guides",
+    letter: "A",
+    text: "Simple educational explainers on common conditions, symptoms, tests, prevention, warning signs, and the kinds of questions to raise with licensed professionals."
   },
   {
-    slug: "diabetes-metabolic",
-    name: "Diabetes & Metabolic Health Centre",
-    focus: "Blood sugar & metabolism",
-    description: "Diabetes, blood sugar control and related metabolic conditions.",
-    conditionSlugs: ["diabetes"],
+    title: "Hospital Visit Preparation",
+    letter: "B",
+    text: "Guides that help people prepare symptoms, questions, documents, timelines, and expectations before visiting a hospital or clinic."
   },
   {
-    slug: "maternal-health",
-    name: "Maternal Health Centre",
-    focus: "Pregnancy & newborn care",
-    description: "Safe pregnancy, danger signs, antenatal and postnatal care.",
-    conditionSlugs: ["pregnancy-danger-signs"],
+    title: "Medical Records Awareness",
+    letter: "C",
+    text: "Education on preserving test results, prescriptions, discharge summaries, scan reports, referral letters, antenatal records, immunization records, and chronic disease logs."
   },
   {
-    slug: "kidney-health",
-    name: "Kidney Health Centre",
-    focus: "Renal care",
-    description: "Kidney disease, prevention and protecting kidney function.",
-    conditionSlugs: ["kidney-disease"],
+    title: "Patient Navigation Education",
+    letter: "D",
+    text: "Non-emergency guidance on how people can move from confusion to proper professional attention without pretending that education is medical care."
   },
   {
-    slug: "mental-behavioural",
-    name: "Mental & Behavioural Health Centre",
-    focus: "Mind & wellbeing",
-    description: "Mental health understanding, support pathways and stigma-free care.",
-    conditionSlugs: [],
+    title: "Family and Community Health Literacy",
+    letter: "E",
+    text: "Health education for families, schools, churches, workplaces, and community groups that need clearer language around care decisions."
   },
   {
-    slug: "preventive-health",
-    name: "Preventive Health Centre",
-    focus: "Screening & protection",
-    description: "Screening, vaccines, malaria prevention and healthy habits.",
-    conditionSlugs: ["malaria"],
+    title: "Healthcare Access Intelligence",
+    letter: "F",
+    text: "Clear public guides on hospitals, referrals, diagnostics, pharmacies, insurance, and care pathways, always distinguished from diagnosis or treatment."
+  }
+];
+
+export const knowledgeHubs = [
+  {
+    title: "Hypertension Clarity Centre",
+    description: "Blood pressure education, follow-up awareness, lifestyle questions, medicine adherence conversations, and record continuity.",
+    helps: "what blood pressure readings, follow-up visits, warning signs, and regular monitoring may mean in a care pathway",
+    records: "blood pressure logs, prescriptions, clinic cards, test results, discharge notes"
   },
+  {
+    title: "Diabetes Clarity Centre",
+    description: "Plain-language diabetes education around tests, monitoring, diet conversations, medication questions, and long-term records.",
+    helps: "how people can prepare for professional diabetes conversations without self-diagnosing",
+    records: "blood sugar logs, HbA1c results, prescriptions, diet notes, eye and foot check reports"
+  },
+  {
+    title: "Maternal Health Clarity Centre",
+    description: "Antenatal preparation, danger-sign awareness, delivery planning, postpartum questions, and preservation of pregnancy records.",
+    helps: "what to ask during antenatal visits and how to keep pregnancy-related documents organized",
+    records: "antenatal cards, scan reports, blood test results, referral letters, discharge summaries"
+  },
+  {
+    title: "Child Health Clarity Centre",
+    description: "Immunization awareness, growth records, child-fever preparation, nutrition questions, and family health documentation.",
+    helps: "how parents and guardians can prepare better questions for licensed child-health professionals",
+    records: "immunization cards, growth charts, prescriptions, test results, admission notes"
+  },
+  {
+    title: "Emergency Warning Signs",
+    description: "Educational warning-sign awareness that encourages immediate professional or emergency care when danger signs appear.",
+    helps: "why some symptoms should not be managed by online content or delayed discussion",
+    records: "current medicines, allergy history, emergency contacts, previous diagnoses"
+  },
+  {
+    title: "Hospital Visit Preparation",
+    description: "Practical preparation for symptoms, timelines, previous care, records, family support, questions, and follow-up notes.",
+    helps: "how to arrive at a hospital visit with clearer information and better records",
+    records: "symptom timeline, previous test results, prescriptions, referral notes, discharge summaries"
+  },
+  {
+    title: "Medical Records Awareness",
+    description: "Public education on why health documents matter and how families can avoid losing care history.",
+    helps: "how records connect one care encounter to another",
+    records: "test results, prescriptions, scans, referrals, discharge summaries, chronic disease logs"
+  },
+  {
+    title: "Patient Rights and Medical Law",
+    description: "Public education on consent, respectful communication, confidentiality awareness, complaints channels, and record access questions.",
+    helps: "how to ask lawful, respectful, and informed questions about care processes",
+    records: "consent notes, discharge documents, bills, referral letters, complaint references where applicable"
+  },
+  {
+    title: "Health Insurance and NHIA Guide",
+    description: "Education on health insurance questions, coverage literacy, HMO/HCP awareness, and payment pathway preparation in Nigeria.",
+    helps: "what to confirm with NHIA, HMOs, employers, state health insurance agencies, and hospitals",
+    records: "enrolment documents, ID cards, HMO details, provider details, authorization notes, bills"
+  },
+  {
+    title: "Diagnostics and Lab Tests",
+    description: "Guide to understanding why test requests, sample instructions, result preservation, and professional interpretation matter.",
+    helps: "why tests need context and should be interpreted by qualified professionals",
+    records: "lab forms, results, doctor requests, dates, reference ranges, imaging reports"
+  },
+  {
+    title: "Pharmacy and Prescription Awareness",
+    description: "Education on prescription preservation, medicine names, dosage questions, allergies, side effects, and pharmacy communication.",
+    helps: "what to ask a licensed doctor or pharmacist before using medicines",
+    records: "prescriptions, medicine packaging, allergy history, adverse reaction notes"
+  },
+  {
+    title: "Family Health Planning",
+    description: "Household-level education around checkups, records, preventive care, health conversations, and family support systems.",
+    helps: "how families can reduce confusion before illness becomes panic",
+    records: "family medical history, emergency contacts, insurance information, key hospital contacts"
+  },
+  {
+    title: "Chronic Disease Records",
+    description: "Long-term documentation awareness for people managing recurring or long-term conditions with licensed professionals.",
+    helps: "how continuity of records supports better professional review over time",
+    records: "clinic cards, logs, prescriptions, lab trends, appointment notes, discharge summaries"
+  },
+  {
+    title: "Preventive Health",
+    description: "Education around screening questions, vaccines, habits, early checks, and community health literacy.",
+    helps: "how prevention conversations can be prepared before disease becomes advanced",
+    records: "screening results, vaccination records, risk-factor notes, family history"
+  },
+  {
+    title: "Community Health Literacy",
+    description: "Public health clarity for schools, churches, employers, associations, and local communities.",
+    helps: "how communities can learn safer language for health education without replacing professionals",
+    records: "programme notes, referral lists, emergency contacts, consent documents where relevant"
+  }
 ];
 
-export function getCentreBySlug(slug: string) {
-  return specialistCentres.find((c) => c.slug === slug);
-}
-
-// Section 6 — featured guides on the homepage
-export const featuredGuideSlugs = [
-  "hypertension",
-  "diabetes",
-  "malaria",
-  "stroke",
-  "kidney-disease",
-  "pregnancy-danger-signs",
+export const hospitalChecklist = [
+  "Current symptoms written in simple words",
+  "When the problem started and how it changed",
+  "Previous test results and scan reports",
+  "Current prescriptions and medicines used recently",
+  "Allergy history and known medical conditions",
+  "Referral letters or discharge summaries",
+  "Questions you want to ask the licensed professional",
+  "Emergency contact and family support information",
+  "Insurance, HMO, NHIA, or payment documents where applicable"
 ];
 
-// Section 7 — patient navigation ("Start Here")
-export const patientNavigation: { title: string; description: string; href: string }[] = [
-  { title: "I have symptoms", description: "Start from what you are feeling and learn what it may mean.", href: "/symptoms" },
-  { title: "I want to understand a diagnosis", description: "Clear guides to conditions, in plain language.", href: "/conditions" },
-  { title: "I want to prepare for a hospital visit", description: "Questions to ask and what to bring.", href: "/conditions/hypertension#questions" },
-  { title: "I want to know when it is urgent", description: "Recognise emergency warning signs early.", href: "/conditions/stroke#urgent" },
-  { title: "I want prevention guidance", description: "Find out what to screen for and how often.", href: "/prevention" },
-  { title: "I have a patient-rights concern", description: "Understand consent, records, documentation and complaint pathways.", href: "/medical-law-patient-rights" },
-  { title: "I represent a hospital or institution", description: "See how we support health institutions and clinics.", href: "/for-hospitals-institutions" },
+export const recordsChecklist = [
+  "Test results",
+  "Prescriptions",
+  "Diagnosis notes",
+  "Discharge summaries",
+  "Scan reports",
+  "Referral letters",
+  "Immunization records",
+  "Antenatal records",
+  "Chronic disease logs",
+  "Allergy history",
+  "Family medical history",
+  "Emergency contacts"
 ];
 
-// "What Health Clarity Institute Nigeria Does" — institutional mission cards
-export const whatWeDo: { title: string; description: string; iconSlug: string }[] = [
-  { title: "Medical Education", description: "Clear, reviewed guides that help people understand conditions, tests, medicines and prevention.", iconSlug: "book" },
-  { title: "Patient Navigation", description: "Practical guidance on what to do, what to ask, and when a situation has become urgent.", iconSlug: "pulse" },
-  { title: "Nigerian Health Context", description: "Information written for the realities of cost, access and care-seeking in Nigeria.", iconSlug: "map" },
-  { title: "Specialist Intelligence", description: "Knowledge organised by area of care, drawing on specialist insight and current guidance.", iconSlug: "stethoscope" },
-  { title: "Hospital & Institutional Support", description: "Digital and editorial infrastructure for hospitals, clinics and health organisations.", iconSlug: "hospital" },
-  { title: "Preventive Health Campaigns", description: "Screening and awareness campaigns built on accurate, responsible information.", iconSlug: "shield" },
+export const roadmap = [
+  {
+    stage: "Stage 1",
+    title: "Public Health Knowledge Platform",
+    status: "Present foundation",
+    text: "Publish careful educational content and patient-navigation explainers for Nigeria and Africa."
+  },
+  {
+    stage: "Stage 2",
+    title: "Editorial and Source Governance",
+    status: "Present foundation",
+    text: "Build policies for sources, corrections, disclaimers, and responsible public health communication."
+  },
+  {
+    stage: "Stage 3",
+    title: "Medical Review and Professional Advisory Network",
+    status: "Future ambition",
+    text: "Create a transparent professional review layer with licensed clinicians, pharmacists, public-health workers, lawyers, and ethics advisers."
+  },
+  {
+    stage: "Stage 4",
+    title: "Patient Navigation and Records Education",
+    status: "Emerging programme",
+    text: "Develop public resources that help people prepare for care, preserve records, and understand follow-up pathways."
+  },
+  {
+    stage: "Stage 5",
+    title: "Community Health Literacy Programmes",
+    status: "Future ambition",
+    text: "Work with schools, churches, employers, NGOs, and community groups on education-only health clarity programmes."
+  },
+  {
+    stage: "Stage 6",
+    title: "Partnerships With Licensed Providers",
+    status: "Future ambition",
+    text: "Build compliant relationships with licensed hospitals, clinics, laboratories, pharmacies, insurers, and professional bodies."
+  },
+  {
+    stage: "Stage 7",
+    title: "Care Coordination and Diagnostic Support Layer",
+    status: "Future ambition",
+    text: "Only after governance, licensing, consent, privacy, and clinical accountability are in place, explore lawful coordination support."
+  },
+  {
+    stage: "Stage 8",
+    title: "Licensed Clinic or Health Centre",
+    status: "Future ambition",
+    text: "A possible future physical care layer, subject to proper licensing, staffing, governance, equipment, and compliance."
+  },
+  {
+    stage: "Stage 9",
+    title: "Future Hospital Institution",
+    status: "Long-term ambition",
+    text: "A future hospital can grow from knowledge, trust, records, professional culture, partnerships, and ethical infrastructure."
+  }
 ];
 
-// "Built for Nigerian Realities" — explained points
-export const builtForRealities: { title: string; body: string }[] = [
-  { title: "Late diagnosis", body: "Many conditions are found late. We explain the early signs worth acting on, so problems are caught while they are easier to treat." },
-  { title: "Cost and access barriers", body: "Care is often paid out of pocket and a facility may be far. We are honest about what testing and treatment involve so families can plan." },
-  { title: "Self-medication risks", body: "Medicines are widely bought without a prescription. We explain when this is dangerous and when a diagnosis must come first." },
-  { title: "Family decision-making", body: "Health decisions are often made by a family, not one person. Our guidance is written to be shared and understood together." },
-  { title: "Rural and urban differences", body: "The same condition is navigated differently in a city hospital and a rural community. We acknowledge both and flag when referral is needed." },
-  { title: "Clearer patient communication", body: "Too much health information is either too technical or too vague. We aim for the middle: accurate, plain, and usable under stress." },
+export const healthcareInstitutions = [
+  "Mayo Clinic",
+  "Cleveland Clinic",
+  "Johns Hopkins Hospital",
+  "Massachusetts General Hospital",
+  "Toronto General Hospital",
+  "Charité Berlin",
+  "Karolinska University Hospital",
+  "Sheba Medical Center",
+  "University Hospital Zurich",
+  "Singapore General Hospital"
 ];
 
-// Section 8 — institutional services
-export const institutionalServices: { title: string; description: string }[] = [
-  { title: "Premium hospital websites", description: "Credible, fast, well-structured sites that reflect the standard of your care." },
-  { title: "Patient education libraries", description: "Branded, reviewed health content libraries for your patients and community." },
-  { title: "Doctor profile systems", description: "Structured, searchable profiles for your clinicians and specialties." },
-  { title: "Appointment & intake pages", description: "Clear pathways for patients to reach and prepare for your services." },
-  { title: "Preventive health campaigns", description: "Screening and awareness campaigns built on accurate information." },
-  { title: "Medical content strategy", description: "Editorial planning and review workflows for trustworthy health content." },
-  { title: "Health documentation systems", description: "Policies, patient materials and knowledge bases, properly structured." },
-  { title: "Specialist clinic microsites", description: "Focused, credible sites for a single specialty, clinic or campaign." },
-];
-
-// Section 9 — trust system
-export const trustPoints: { label: string; detail: string }[] = [
-  { label: "Written for education", detail: "Plain-language guides to help you understand, not to replace your clinician." },
-  { label: "Reviewed by professionals", detail: "Content is checked by qualified reviewers before publication." },
-  { label: "Sources listed", detail: "Each guide cites the references it is based on." },
-  { label: "Last reviewed dates", detail: "Every guide shows when it was last checked and when it is due again." },
-  { label: "Not a substitute for advice", detail: "Always seek diagnosis and treatment from a qualified professional." },
-  { label: "Emergency guidance included", detail: "Guides flag clearly when a situation needs urgent care." },
-];
-
-// ─────────────────────────── lightweight library indexes (placeholder data) ──
-// These power the Symptoms / Tests / Medicines / Prevention A–Z pages until full
-// articles are authored. Each is intentionally minimal — the same data shape can
-// later be promoted to a full HealthArticle.
-
-export interface LibraryEntry {
-  slug: string;
-  title: string;
-  blurb: string;
-}
-
-export const symptoms: LibraryEntry[] = [
-  { slug: "chest-pain", title: "Chest pain", blurb: "Causes range from minor to emergency — learn the warning signs." },
-  { slug: "fever", title: "Fever", blurb: "When a raised temperature needs testing and when it needs urgent care." },
-  { slug: "headache", title: "Headache", blurb: "Common types and the features that signal something serious." },
-  { slug: "shortness-of-breath", title: "Shortness of breath", blurb: "Understanding breathlessness and when to seek help." },
-  { slug: "abdominal-pain", title: "Abdominal pain", blurb: "What different kinds of tummy pain may indicate." },
-  { slug: "dizziness", title: "Dizziness", blurb: "Feeling faint or unsteady — possible causes and red flags." },
-  { slug: "swelling-legs", title: "Swelling in the legs", blurb: "Fluid build-up and what it can mean." },
-  { slug: "fatigue", title: "Persistent tiredness", blurb: "When ongoing fatigue is worth investigating." },
-];
-
-export const tests: LibraryEntry[] = [
-  { slug: "blood-pressure-check", title: "Blood pressure check", blurb: "How it is measured and what the numbers mean." },
-  { slug: "blood-sugar-test", title: "Blood sugar test", blurb: "Fasting glucose and HbA1c explained." },
-  { slug: "malaria-rdt", title: "Malaria rapid test (RDT)", blurb: "How malaria is confirmed before treatment." },
-  { slug: "kidney-function-test", title: "Kidney function test", blurb: "Creatinine, eGFR and urine tests for the kidneys." },
-  { slug: "full-blood-count", title: "Full blood count", blurb: "What this common blood test checks." },
-  { slug: "ultrasound-scan", title: "Ultrasound scan", blurb: "How and why ultrasound is used, including in pregnancy." },
-];
-
-export const medicines: LibraryEntry[] = [
-  { slug: "antihypertensives", title: "Blood pressure medicines", blurb: "Main groups, how they work and using them safely." },
-  { slug: "metformin", title: "Metformin", blurb: "A first-line medicine for type 2 diabetes." },
-  { slug: "act-antimalarials", title: "Antimalarials (ACTs)", blurb: "Recommended malaria treatment and completing the course." },
-  { slug: "paracetamol", title: "Paracetamol", blurb: "Safe use for fever and pain, and avoiding overdose." },
-  { slug: "iron-folate", title: "Iron & folate supplements", blurb: "Used in pregnancy and to treat anaemia." },
-  { slug: "antibiotics-safe-use", title: "Antibiotics — safe use", blurb: "Why they are not for every illness, and resistance." },
-];
-
-export const preventionGuides: LibraryEntry[] = [
-  { slug: "blood-pressure-screening", title: "Blood pressure screening", blurb: "Who should check, and how often." },
-  { slug: "diabetes-screening", title: "Diabetes screening", blurb: "Spotting raised blood sugar before symptoms." },
-  { slug: "malaria-prevention", title: "Malaria prevention", blurb: "Nets, environment and protection in pregnancy." },
-  { slug: "antenatal-care", title: "Antenatal care schedule", blurb: "Why and when to attend during pregnancy." },
-  { slug: "healthy-eating", title: "Healthy eating basics", blurb: "Practical food choices for lower risk." },
-  { slug: "physical-activity", title: "Physical activity", blurb: "Simple, affordable ways to stay active." },
+export const sourceLinks = [
+  {
+    label: "National Health Insurance Authority",
+    href: "https://www.nhia.gov.ng/",
+    text: "Official Nigerian health insurance authority resources, programmes, HMO/HCP directories, and public notices."
+  },
+  {
+    label: "NHIA Act 2022",
+    href: "https://www.nhia.gov.ng/nhia-act/",
+    text: "Official NHIA page for the gazetted Act and related resources."
+  },
+  {
+    label: "WHO Universal Health Coverage",
+    href: "https://www.who.int/health-topics/universal-health-coverage",
+    text: "Global public health framing for service coverage and financial protection."
+  },
+  {
+    label: "World Bank Health Expenditure Data",
+    href: "https://data.worldbank.org/indicator/SH.XPD.OOPC.CH.ZS?locations=NG",
+    text: "Open data for out-of-pocket health expenditure indicators in Nigeria."
+  }
 ];

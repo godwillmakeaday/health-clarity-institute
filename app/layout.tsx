@@ -1,47 +1,24 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { site } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.tagline}`,
-    template: `%s · ${site.shortName}`,
+    default: site.name,
+    template: `%s | ${site.name}`
   },
-  description: site.description,
-  keywords: [
-    "Nigerian health information",
-    "health library Nigeria",
-    "patient education",
-    "conditions A to Z",
-    "Nigerian medical guides",
-    "patient rights Nigeria",
-    "medical law Nigeria",
-  ],
-  openGraph: {
-    type: "website",
-    locale: "en_NG",
-    siteName: site.name,
-    title: `${site.name} — ${site.tagline}`,
-    description: site.description,
-  },
-  robots: { index: true, follow: true },
+  description: site.description
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en-NG">
+    <html lang="en">
       <body>
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-navy focus:px-4 focus:py-2 focus:text-white"
-        >
-          Skip to content
-        </a>
         <Header />
-        <main id="main">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
