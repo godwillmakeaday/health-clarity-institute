@@ -94,6 +94,14 @@ export function Footer() {
           </p>
         </div>
       </Container>
-    </footer>
+    
+          <div className="mt-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Institutional Desks</p>
+            <a href="/access-infrastructure-desk" className="mt-3 inline-block text-sm font-medium text-slate-700 transition hover:text-sky-700">
+              Healthcare Access Infrastructure Desk
+            </a>
+          </div>
+
+        </footer>
   );
 }

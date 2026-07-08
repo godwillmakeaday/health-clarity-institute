@@ -65,6 +65,11 @@ export function Header() {
             >
               For Institutions
             </Link>
+          
+            <a href="/access-infrastructure-desk" className="text-sm font-medium text-slate-700 transition hover:text-sky-700">
+              Access Infrastructure
+            </a>
+
           </nav>
 
           <button
